@@ -150,8 +150,10 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Git Fugitive Configuration
-nnoremap <C-g>x :Git add -A<cr>
+nnoremap <C-g>a :Git add -A<cr>
 nnoremap <C-g>c :Git commit -m "
 nnoremap <C-g>p :Git push<cr>
 
+" Coc Highlight Configuration
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
