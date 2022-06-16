@@ -154,6 +154,11 @@ nnoremap <C-g>a :Git add -A<cr>
 nnoremap <C-g>c :Git commit -m "
 nnoremap <C-g>p :Git push<cr>
 
+" Navigation Mapping Configuration
+nnoremap <leader>gd <Plug>(coc-definition)
+nnoremap <leader>gi <Plug>(coc-implementation)
+nnoremap <leader>gr <Plug>(coc-references)
+
 " Coc Highlight Configuration
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
