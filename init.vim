@@ -10,6 +10,8 @@ call plug#begin("$HOME/.vim/plugged")
 	Plug 'tpope/vim-fugitive'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim'
+	Plug 'cohama/lexima.vim'
+	Plug 'mattn/emmet-vim'
 call plug#end()
 
 set encoding=UTF-8
@@ -33,6 +35,8 @@ set mouse=a                 " enable mouse click
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
 set ttyfast                 " Speed up scrolling in Vim
+set foldmethod=syntax
+set nofoldenable
 
 " CocNVIM Configuration
 let s:black = "000000"
@@ -42,7 +46,7 @@ let s:black = "000000"
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree
 
-let NERDTreeWinSize=48
+let NERDTreeWinSize=40
 let NERDTreeWinPos="left"
 let NERDTreeShowHidden=1
 let NERDTreeAutoDeleteBuffer=1
@@ -63,7 +67,6 @@ map  <C-n> :tabnew<CR>
 	Plug 'terryma/vim-multiple-cursors'
 map  <C-c> :tabclose<CR>
 
-let NERDTreeWinSize=48
 " Config DevIcons
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 1
@@ -113,6 +116,10 @@ nnoremap <C-g>a :Git add -A<cr>
 nnoremap <C-g>c :Git commit -m "
 nnoremap <C-g>p :Git push<cr>
 
+" Other Mappings Configuration
+nnoremap <C-s> :w<cr>
+nnoremap <C-q> :q<cr>
+
 " Navigation Mapping Configuration
 nnoremap <leader>gd <Plug>(coc-definition)
 nnoremap <leader>gi <Plug>(coc-implementation)
@@ -134,3 +141,10 @@ require('material').setup{
 " :colorscheme material
 " let g:material_style = "deep ocean"
 hi Normal guibg=NONE ctermbg=NONE
+
+" Emmet Configuration
+nnoremap <C-e> <C-y>,
+
+" Prettier Configuration
+nnoremap <leader>f :CocCommand prettier.formatFile<cr>
+
