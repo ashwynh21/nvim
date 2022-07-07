@@ -12,6 +12,8 @@ call plug#begin("$HOME/.vim/plugged")
 	Plug 'nvim-telescope/telescope.nvim'
 	Plug 'cohama/lexima.vim'
 	Plug 'mattn/emmet-vim'
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'f-person/git-blame.nvim'
 call plug#end()
 
 set encoding=UTF-8
@@ -38,11 +40,6 @@ set ttyfast                 " Speed up scrolling in Vim
 set foldmethod=syntax
 set nofoldenable
 
-" CocNVIM Configuration
-let s:black = "000000"
-:highlight CocFloating ctermb=black
-:highlight CocErrorFloat ctermfg=white
-
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree
 
@@ -53,7 +50,7 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeAutoDeleteBuffer=1
 
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-a> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
@@ -64,7 +61,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
-	Plug 'terryma/vim-multiple-cursors'
 map  <C-c> :tabclose<CR>
 
 " Config DevIcons
@@ -131,12 +127,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Material Configuration
 nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
 
-require('material').setup{
-	disable = {
-		background = true
-	}
-}
-
 " ColorScheme Configuration
 " :colorscheme material
 " let g:material_style = "deep ocean"
@@ -146,5 +136,16 @@ hi Normal guibg=NONE ctermbg=NONE
 nnoremap <C-e> <C-y>,
 
 " Prettier Configuration
-nnoremap <leader>f :CocCommand prettier.formatFile<cr>
+nnoremap <leader>p :CocCommand prettier.formatFile<cr>
+
+" NerdTree Refresh
+nmap <Leader>r :NERDTreeFocus<cr> \| R \| <c-w><c-p>
+
+" Git Blame Configuration
+let g:gitblame_enabled=0
+let g:gitblame_message_template='<summary> • <date> • <author>'
+let g:gitblame_date_format='%r'
+let g:gitblame_ignored_filetypes=['lua', 'c', 'vim']
+
+nmap <C-g>b :GitBlameToggle<cr>
 
