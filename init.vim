@@ -25,12 +25,12 @@ set hlsearch                " highlight search
 set smarttab				" set smart tabbing
 set relativenumber          " set relative line numbers 
 set incsearch               " incremental search
-set tabstop=4               " number of columns occupied by a tab 
-set shiftwidth=4            " width for autoindents
+set tabstop=2               " number of columns occupied by a tab 
+set shiftwidth=2            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
 set number                  " add line numbers
 set wildmode=longest,list   " get bash-like tab completions
-set cc=128                  " set an 80 column border for good coding style
+set cc=120                  " set an 80 column border for good coding style
 filetype plugin indent on   " allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
