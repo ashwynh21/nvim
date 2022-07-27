@@ -12,8 +12,6 @@ call plug#begin("$HOME/.vim/plugged")
 	Plug 'nvim-telescope/telescope.nvim'
 	Plug 'cohama/lexima.vim'
 	Plug 'mattn/emmet-vim'
-	Plug 'terryma/vim-multiple-cursors'
-	Plug 'f-person/git-blame.nvim'
 call plug#end()
 
 set encoding=UTF-8
@@ -60,7 +58,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Tab switch mappings
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
-map  <C-n> :tabnew<CR>
+nmap  <C-n> :tabnew<CR>
 map  <C-c> :tabclose<CR>
 
 " Config DevIcons
@@ -102,7 +100,7 @@ nnoremap <C-x> :TerminalSplit bash<CR>
 nmap <F3> :TagbarToggle<CR>
 
 " Find files using Telescope command line sugar
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope git_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -117,9 +115,16 @@ nnoremap <C-s> :w<cr>
 nnoremap <C-q> :q<cr>
 
 " Navigation Mapping Configuration
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 nnoremap <leader>gd <Plug>(coc-definition)
 nnoremap <leader>gi <Plug>(coc-implementation)
 nnoremap <leader>gr <Plug>(coc-references)
+
+nnoremap <leader>k :call ShowDocumentation()<CR>
+
+nmap <leader>rn <Plug>(coc-rename)
 
 " Coc Highlight Configuration
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -141,11 +146,10 @@ nnoremap <leader>p :CocCommand prettier.formatFile<cr>
 " NerdTree Refresh
 nmap <Leader>r :NERDTreeFocus<cr> \| R \| <c-w><c-p>
 
-" Git Blame Configuration
-let g:gitblame_enabled=0
-let g:gitblame_message_template='<summary> • <date> • <author>'
-let g:gitblame_date_format='%r'
-let g:gitblame_ignored_filetypes=['lua', 'c', 'vim']
-
-nmap <C-g>b :GitBlameToggle<cr>
-
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('k', 'in')
+  endif
+endfunction
