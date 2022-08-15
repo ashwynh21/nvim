@@ -7,11 +7,16 @@ call plug#begin("$HOME/.vim/plugged")
 	Plug 'preservim/tagbar'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'marko-cerovac/material.nvim'
+	Plug 'glepnir/dashboard-nvim'
 	Plug 'tpope/vim-fugitive'
 	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
 	Plug 'cohama/lexima.vim'
 	Plug 'mattn/emmet-vim'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+	Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 
 set encoding=UTF-8
@@ -37,6 +42,8 @@ filetype plugin on
 set ttyfast                 " Speed up scrolling in Vim
 set foldmethod=syntax
 set nofoldenable
+set lazyredraw
+set termguicolors
 
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree
@@ -100,7 +107,8 @@ nnoremap <C-x> :TerminalSplit bash<CR>
 nmap <F3> :TagbarToggle<CR>
 
 " Find files using Telescope command line sugar
-nnoremap <leader>ff <cmd>Telescope git_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fs <cmd>Telescope grep_string<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -145,6 +153,9 @@ nnoremap <leader>p :CocCommand prettier.formatFile<cr>
 
 " NerdTree Refresh
 nmap <Leader>r :NERDTreeFocus<cr> \| R \| <c-w><c-p>
+
+" FZF Configurations
+let g:ackprg = 'ag --vimgrep'
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
