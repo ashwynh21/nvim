@@ -16,13 +16,20 @@ vim.api.nvim_create_autocmd(
 
 -- 2. we call the startup and add our plugins
 --
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
   -- [[ Plugins Go Here ]]
+	
+	-- [[ NERDTree ]]
 	use {
 		'preservim/nerdtree',
 		requires = 'Xuyuanp/nerdtree-git-plugin'
 	}
+	-- [[ Icons ]]
 	use 'ryanoasis/vim-devicons'
+	use {
+  	'nvim-lualine/lualine.nvim',
+  	requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
 	use 'vim-airline/vim-airline'
 	use 'preservim/tagbar'
 	use 'neoclide/coc.nvim'
@@ -38,3 +45,8 @@ return require('packer').startup(function(use)
 	use 'nvim-telescope/telescope.nvim'
 	use 'nvim-treesitter/nvim-treesitter'
 end)
+
+-- [[ LuaLine ]]
+require('lualine').setup({
+	theme = 'dracula'
+})
