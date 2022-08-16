@@ -4,7 +4,7 @@ local o = vim.o
 -- cmd('syntax on')
 -- vim.api.nvim_command('filetype plugin indent on')
 
-o.termguicolors = true
+-- o.termguicolors = true
 -- o.background = 'dark'
 
 -- Do not save when switching buffers
@@ -21,7 +21,7 @@ o.scrolloff = 8
 o.number = true
 o.numberwidth = 4
 o.relativenumber = true
-o.signcolumn = 'yes'
+o.signcolumn = "yes"
 o.cursorline = true
 
 -- Better editing experience
@@ -35,12 +35,12 @@ o.tabstop = 2
 o.shiftwidth = 0
 o.softtabstop = -1 -- If negative, shiftwidth value is used
 o.list = true
-o.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
+o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
 -- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
 -- o.formatoptions = 'qrn1'
 
 -- Makes neovim and host OS clipboard play nicely with each other
-o.clipboard = 'unnamedplus'
+o.clipboard = "unnamedplus"
 
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
@@ -77,5 +77,4 @@ o.splitbelow = true
 
 -- Map <leader> to space
 -- g.mapleader = ' '
-g.maplocalleader = ' '
-
+g.maplocalleader = " "
