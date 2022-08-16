@@ -65,6 +65,13 @@ return require("packer").startup({
 				require("neoscroll").setup({ hide_cursor = false })
 			end,
 		})
+		use({
+			"glepnir/dashboard-nvim",
+			config = function()
+				require("src.plugins.dashboard")
+			end,
+		})
+		use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 		----------------------------------------
 		-- Theme, Icons, Statusbar, Bufferbar --
@@ -119,13 +126,6 @@ return require("packer").startup({
 			event = "BufRead",
 			config = function()
 				require("src.plugins.indentline")
-			end,
-		})
-		use({
-			"norcalli/nvim-colorizer.lua",
-			event = "CursorHold",
-			config = function()
-				require("colorizer").setup()
 			end,
 		})
 		use({
