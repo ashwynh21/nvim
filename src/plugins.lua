@@ -71,7 +71,9 @@ return require("packer").startup({
 				require("src.plugins.dashboard")
 			end,
 		})
-		use({ "nvim-telescope/telescope-file-browser.nvim" })
+		use({
+			"nvim-telescope/telescope-file-browser.nvim",
+		})
 
 		----------------------------------------
 		-- Theme, Icons, Statusbar, Bufferbar --
@@ -151,11 +153,13 @@ return require("packer").startup({
 			event = "BufRead",
 			config = function()
 				require("src.plugins.lsp.servers")
+				require("src.plugins.mason")
 			end,
 			requires = {
 				{
-					-- WARN: Unfortunately we won't be able to lazy load this
 					"hrsh7th/cmp-nvim-lsp",
+					"williamboman/mason.nvim",
+					"williamboman/mason-lspconfig.nvim",
 				},
 			},
 		})
@@ -164,6 +168,13 @@ return require("packer").startup({
 			event = "BufRead",
 			config = function()
 				require("src.plugins.lsp.null-ls")
+			end,
+		})
+		use({
+			"glepnir/lspsaga.nvim",
+			branch = "main",
+			config = function()
+				require("src.plugins.saga")
 			end,
 		})
 		use({
@@ -201,6 +212,9 @@ return require("packer").startup({
 			config = function()
 				require("src.plugins.pairs")
 			end,
+		})
+		use({
+			"onsails/lspkind.nvim",
 		})
 	end,
 	config = {
