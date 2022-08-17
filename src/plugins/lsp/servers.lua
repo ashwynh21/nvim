@@ -28,6 +28,33 @@ vim.diagnostic.config({
 	},
 })
 
+-- Typescript
+lsp.tsserver.setup({
+	flags = flags,
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		["tsserver"] = {
+			completion = {
+				enable = true,
+				showWord = "Disable",
+				-- keywordSnippet = 'Disable',
+			},
+			diagnostics = {
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = { os.getenv("VIMRUNTIME") },
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
+
 -- Lua
 lsp.sumneko_lua.setup({
 	flags = flags,
@@ -84,25 +111,15 @@ lsp.rust_analyzer.setup({
 	},
 })
 
----List of the LSP server that don't need special configuration
-local servers = {
-	"zls", -- Zig
-	"gopls", -- Golang
-	"tsserver", -- Typescript
-	"html", -- HTML
-	"cssls", -- CSS
-	"jsonls", -- Json
-	"yamlls", -- YAML
-	-- 'terraformls', -- Terraform
-}
-
-for _, server in ipairs(servers) do
-	lsp[server].setup({
-		flags = flags,
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-end
+require("mason-lspconfig").setup_handlers({
+  function (server_name)
+    lsp[server_name].setup({
+		  flags = flags,
+		  capabilities = capabilities,
+		  on_attach = on_attach,
+    })
+  end,
+})
 
 -- TIP: Using `eslint_d` diagnostic from `null-ls` bcz it is way fasterrrrrrr.
 -- Eslint
