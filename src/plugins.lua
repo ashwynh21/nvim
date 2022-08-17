@@ -101,6 +101,17 @@ return require("packer").startup({
         end,
       },
     })
+    use({
+      "svrana/neosolarized.nvim",
+      config = function()
+        require('neosolarized').setup({
+          comment_italics = true,
+        })
+      end,
+      requires = {
+        "tjdevries/colorbuddy.nvim"
+      }
+    })
 
     -----------------------------------
     -- Treesitter: Better Highlights --
