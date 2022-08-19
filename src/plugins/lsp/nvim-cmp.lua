@@ -38,7 +38,10 @@ cmp.setup({
     ["<C-e>"] = cmp.config.disable,
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<CR>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }),
     ["<C-Space>"] = cmp.mapping.complete(),
   }),
   sources = cmp.config.sources({
@@ -62,3 +65,8 @@ cmp.setup({
     end,
   },
 })
+
+vim.cmd([[
+  set completeopt=menuone,noinsert,noselect
+  highlight! default link CmpItemKind CmpItemMenuDefault
+]])

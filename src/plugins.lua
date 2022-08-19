@@ -49,7 +49,7 @@ return require("packer").startup({
       tag = "v2.*",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
-        require("src.plugins.navigator")
+        require("src.plugins.bufferline")
       end,
     })
     use({
@@ -102,7 +102,7 @@ return require("packer").startup({
       },
     })
     use({
-      "svrana/neosolarized.nvim",
+      "gosukiwi/neosolarized.nvim",
       config = function()
         require('neosolarized').setup({
           comment_italics = true,
@@ -128,7 +128,13 @@ return require("packer").startup({
       { "nvim-treesitter/playground", after = "nvim-treesitter" },
       { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
       { "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" },
-      { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+      {
+        "windwp/nvim-ts-autotag",
+        after = "nvim-treesitter",
+        config = function()
+          require("nvim-ts-autotag").setup({})
+        end
+      },
       { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
     })
 
@@ -154,6 +160,12 @@ return require("packer").startup({
       event = "BufRead",
       config = function()
         require("src.plugins.gitmessenger")
+      end,
+    })
+    use({
+      "dinhhuy258/git.nvim",
+      config = function()
+        require("src.plugins.git")
       end,
     })
 
