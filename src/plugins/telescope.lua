@@ -6,6 +6,10 @@ require("telescope").setup({
 		prompt_prefix = " ❯ ",
 		initial_mode = "insert",
 		sorting_strategy = "ascending",
+    file_ignore_patterns = {
+      "node_modules",
+      ".git",
+    },
 		layout_config = {
 			prompt_position = "top",
 		},

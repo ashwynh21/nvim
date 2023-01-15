@@ -1,10 +1,10 @@
 local g = vim.g
 local o = vim.o
 
--- cmd('syntax on')
+-- cmd("syntax on")
 -- vim.api.nvim_command('filetype plugin indent on')
 
--- o.termguicolors = true
+o.termguicolors = true
 -- o.background = 'dark'
 
 -- Do not save when switching buffers
@@ -19,7 +19,7 @@ o.scrolloff = 8
 
 -- Better editor UI
 o.number = true
-o.numberwidth = 4
+o.numberwidth = 2
 o.relativenumber = true
 o.signcolumn = "yes"
 o.cursorline = true

@@ -6,10 +6,10 @@
 --
 -- Vanilla Config
 
-package.path = package.path .. 'C:\\Users\\ashwyn\\AppData\\local\\nvim\\?.lua;'
+package.path = package.path .. 'C:\\Users\\ashwy\\AppData\\local\\nvim\\?.lua;'
 
 require('src.settings')
--- require('src/autocmd')
+require('src/autocmd')
 require('src.plugins')
 require('src.keybinds')
 

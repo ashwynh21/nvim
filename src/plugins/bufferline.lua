@@ -2,30 +2,31 @@
 vim.opt.termguicolors = true
 require("bufferline").setup({
   options = {
-    mode = "tabs",
+    mode = 'buffers',
     separator_style = 'slant',
     always_show_bufferline = true,
     show_buffer_close_icons = true,
     show_close_icon = true,
-    color_icons = true
+    color_icons = true,
+    diagnostics = 'nvim_lsp'
   },
   highlights = {
     separator = {
       fg = '#073642',
-      bg = '#002b36',
+      bg = '#073642',
     },
     separator_selected = {
-      fg = '#073642',
+      fg = '#275662',
     },
     background = {
-      fg = '#657b83',
-      bg = '#002b36'
+      fg = '#766583',
+      bg = '#212838'
     },
     buffer_selected = {
-      fg = '#fdf6e3',
+      fg = '#fdf6f3',
     },
     fill = {
-      bg = '#073642'
+      bg = '#1f243a'
     }
   },
 })

@@ -3,7 +3,8 @@
 -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 -- vim.o.foldlevelstart = 99
 
-require("nvim-treesitter.install").compilers = { "zig", "gcc", "clang" }
+require("nvim-treesitter.install").compilers = { "clang", "zig", "gcc" }
+require("nvim-treesitter.install").target = "x86_64-w64-windows-gnu"
 
 require("nvim-treesitter.configs").setup({
 	-- nvim-treesitter/nvim-treesitter (self config)
