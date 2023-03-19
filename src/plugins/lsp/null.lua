@@ -32,8 +32,8 @@ nls.setup({
 		------------------
 		-- CODE ACTIONS --
 		------------------
-		cda.eslint,
-		cda.shellcheck,
+		-- cda.eslint,
+		-- cda.shellcheck,
 	},
 	on_attach = function(client, bufnr)
 		U.fmt_on_save(client, bufnr)

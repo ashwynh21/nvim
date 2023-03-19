@@ -64,6 +64,10 @@ cmp.setup({
       return item
     end,
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
 })
 
 vim.cmd([[
