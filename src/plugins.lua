@@ -70,9 +70,11 @@ return require("packer").startup({
 		})
 		use({
 			"glepnir/dashboard-nvim",
+      event = "VimEnter",
 			config = function()
 				require("src.plugins.dashboard")
 			end,
+      requires = {'nvim-tree/nvim-web-devicons'}
 		})
 		use({
 			"nvim-telescope/telescope-file-browser.nvim",
@@ -103,8 +105,14 @@ return require("packer").startup({
 				end,
 			},
 		})
+    -----------------------------------
+    ----------- Theming ---------------
+    -----------------------------------
+    use('shaunsingh/solarized.nvim')
     use('folke/tokyonight.nvim')
-
+    use({
+      "loctvl842/monokai-pro.nvim",
+    })
 		-----------------------------------
 		-- Treesitter: Better Highlights --
 		-----------------------------------
@@ -199,6 +207,11 @@ return require("packer").startup({
 			config = function()
 				require("src.plugins.saga")
 			end,
+      requires = {
+        {"nvim-tree/nvim-web-devicons"},
+        --Please make sure you install markdown and markdown_inline parser
+        {"nvim-treesitter/nvim-treesitter"}
+      }
 		})
 		use({
 			{

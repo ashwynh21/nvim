@@ -11,9 +11,9 @@ saga.setup({
     },
   },
   lightbulb = {
-    enable = false,
+    enable = true,
   },
   symbol_in_winbar = {
-    enable = false,
+    enable = true,
   },
 })
