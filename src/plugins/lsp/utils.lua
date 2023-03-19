@@ -45,7 +45,7 @@ end
 ---@param buf number
 function U.mappings(buf)
 	local opts = { buffer = buf }
-	map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+	map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({timeout_ms = 20000})<CR>", opts)
 	map("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
