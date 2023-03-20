@@ -20,7 +20,7 @@ return require("packer").startup({
 		---------------------
 		--   Navigation    --
 		---------------------
-    use({
+		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
 			requires = {
@@ -28,9 +28,9 @@ return require("packer").startup({
 				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 				"MunifTanjim/nui.nvim",
 			},
-      config = function()
-        require("src.plugins.neotree")
-      end
+			config = function()
+				require("src.plugins.neotree")
+			end,
 		})
 
 		use({
@@ -70,11 +70,11 @@ return require("packer").startup({
 		})
 		use({
 			"glepnir/dashboard-nvim",
-      event = "VimEnter",
+			event = "VimEnter",
 			config = function()
 				require("src.plugins.dashboard")
 			end,
-      requires = {'nvim-tree/nvim-web-devicons'}
+			requires = { "nvim-tree/nvim-web-devicons" },
 		})
 		use({
 			"nvim-telescope/telescope-file-browser.nvim",
@@ -105,14 +105,14 @@ return require("packer").startup({
 				end,
 			},
 		})
-    -----------------------------------
-    ----------- Theming ---------------
-    -----------------------------------
-    use('shaunsingh/solarized.nvim')
-    use('folke/tokyonight.nvim')
-    use({
-      "loctvl842/monokai-pro.nvim",
-    })
+		-----------------------------------
+		----------- Theming ---------------
+		-----------------------------------
+		use("shaunsingh/solarized.nvim")
+		use("folke/tokyonight.nvim")
+		use({
+			"loctvl842/monokai-pro.nvim",
+		})
 		-----------------------------------
 		-- Treesitter: Better Highlights --
 		-----------------------------------
@@ -175,7 +175,7 @@ return require("packer").startup({
 				require("git-conflict").setup()
 			end,
 		})
-    use('mattn/emmet-vim')
+		use("mattn/emmet-vim")
 		-----------------------------------
 		-- LSP, Completions and Snippets --
 		-----------------------------------
@@ -207,11 +207,11 @@ return require("packer").startup({
 			config = function()
 				require("src.plugins.saga")
 			end,
-      requires = {
-        {"nvim-tree/nvim-web-devicons"},
-        --Please make sure you install markdown and markdown_inline parser
-        {"nvim-treesitter/nvim-treesitter"}
-      }
+			requires = {
+				{ "nvim-tree/nvim-web-devicons" },
+				--Please make sure you install markdown and markdown_inline parser
+				{ "nvim-treesitter/nvim-treesitter" },
+			},
 		})
 		use({
 			{
@@ -251,6 +251,12 @@ return require("packer").startup({
 		})
 		use({
 			"onsails/lspkind.nvim",
+		})
+		use({
+			"lewis6991/hover.nvim",
+			config = function()
+				require("src.plugins.lsp.hover")
+			end,
 		})
 	end,
 	config = {
