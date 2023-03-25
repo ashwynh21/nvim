@@ -176,6 +176,17 @@ return require("packer").startup({
 			end,
 		})
 		use("mattn/emmet-vim")
+		use({
+			"kosayoda/nvim-lightbulb",
+			requires = "antoinemadec/FixCursorHold.nvim",
+			config = function()
+				require("src.plugins.lightbulb")
+			end,
+		})
+		use({
+			"weilbith/nvim-code-action-menu",
+			cmd = "CodeActionMenu",
+		})
 		-----------------------------------
 		-- LSP, Completions and Snippets --
 		-----------------------------------
