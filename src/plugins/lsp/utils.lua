@@ -62,6 +62,7 @@ function U.mappings(buf)
 	map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	map("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	map("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	map("n", "<space>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
 	-- map('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 	-- map('n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
 end
