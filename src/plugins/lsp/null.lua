@@ -36,7 +36,6 @@ nls.setup({
 		-- cda.shellcheck,
 	},
 	on_attach = function(client, bufnr)
-		U.fmt_on_save(client, bufnr)
 		U.mappings(bufnr)
 	end,
 })
