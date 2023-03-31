@@ -22,6 +22,14 @@ function U.fmt_on_save(client, buf)
 	--	end
 end
 
+function U.diagnostics()
+	vim.o.updatetime = 1000
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()]])
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.hover(nil, {focus=false})]])
+	vim.cmd([[autocmd CursorMoved * lua vim.lsp.buf.clear_references()]])
+end
+
 ---LSP servers capabilities w/ nvim-cmp
 function U.capabilities()
 	-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
@@ -52,13 +60,9 @@ function U.mappings(buf)
 	map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	map("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	-- map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-	-- map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-	-- map('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 	map("n", "td", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	map("n", "<leader>c", "<cmd>CodeActionMenu<CR>", opts)
-	-- map('v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 	map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	map("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	map("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)

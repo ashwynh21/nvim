@@ -214,7 +214,9 @@ return require("packer").startup({
 		})
 		use({
 			"glepnir/lspsaga.nvim",
+			opt = true,
 			branch = "main",
+			event = "LspAttach",
 			config = function()
 				require("src.plugins.saga")
 			end,
@@ -262,12 +264,6 @@ return require("packer").startup({
 		})
 		use({
 			"onsails/lspkind.nvim",
-		})
-		use({
-			"lewis6991/hover.nvim",
-			config = function()
-				require("src.plugins.lsp.hover")
-			end,
 		})
 	end,
 	config = {

@@ -16,20 +16,47 @@ local capabilities = U.capabilities()
 local function on_attach(client, buf)
 	U.disable_formatting(client)
 	U.mappings(buf)
+	U.diagnostics()
 end
 
 -- Configuring native diagnostics
+
+vim.lsp.handlers["textDocument/codeAction"] = vim.lsp.with(vim.lsp.handlers.code_action, {
+	-- Use a sharp border with `FloatBorder` highlights
+	border = "rounded",
+	style = "minimal",
+	-- add the title in hover float window
+	title = "code action",
+  float = true,
+})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	-- Use a sharp border with `FloatBorder` highlights
+	border = "rounded",
+	style = "minimal",
+	-- add the title in hover float window
+	title = "hover",
+
+	focusable = false,
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	-- Use a sharp border with `FloatBorder` highlights
+	border = "rounded",
+	style = "minimal",
+})
 vim.diagnostic.config({
 	virtual_text = {
 		source = "always",
+		prefix = "●",
 	},
+	severity_sort = true,
+	underline = true,
+	update_in_insert = false,
 	float = {
-		source = "always",
-		border = "single",
+		focusable = true,
+		style = "minimal",
+		border = "rounded",
 	},
 })
-
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
 require("mason").setup()
 require("mason-lspconfig").setup({
