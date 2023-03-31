@@ -16,7 +16,22 @@ local capabilities = U.capabilities()
 local function on_attach(client, buf)
 	U.disable_formatting(client)
 	U.mappings(buf)
-	U.diagnostics()
+
+	-- Find the clients capabilities
+	local cap = client.server_capabilities
+
+	-- Only highlight if compatible with the language
+	vim.o.updatetime = 1000
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.hover(nil, {focus=false})]])
+
+	if cap.document_highlight then
+		vim.cmd("augroup LspHighlight")
+		vim.cmd("autocmd!")
+		vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()]])
+		vim.cmd([[autocmd CursorMoved * lua vim.lsp.buf.clear_references()]])
+		vim.cmd("augroup END")
+	end
 end
 
 -- Configuring native diagnostics
@@ -27,7 +42,7 @@ vim.lsp.handlers["textDocument/codeAction"] = vim.lsp.with(vim.lsp.handlers.code
 	style = "minimal",
 	-- add the title in hover float window
 	title = "code action",
-  float = true,
+	float = true,
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	-- Use a sharp border with `FloatBorder` highlights

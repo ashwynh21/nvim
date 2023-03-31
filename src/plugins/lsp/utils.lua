@@ -2,14 +2,6 @@ local map = vim.keymap.set
 
 local U = {}
 
-function U.diagnostics()
-	vim.o.updatetime = 1000
-	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
-	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()]])
-	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.hover(nil, {focus=false})]])
-	vim.cmd([[autocmd CursorMoved * lua vim.lsp.buf.clear_references()]])
-end
-
 ---LSP servers capabilities w/ nvim-cmp
 function U.capabilities()
 	-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
@@ -22,9 +14,6 @@ end
 ---@param client table
 ---@see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
 function U.disable_formatting(client)
-	-- client.resolved_capabilities.document_formatting = false
-	-- client.resolved_capabilities.document_range_formatting = false
-
 	client.server_capabilities.documentFormattingProvider = false
 	client.server_capabilities.documentRangeFormattingProvider = false
 end
