@@ -16,3 +16,4 @@ map("n", "<leader>]", ":bn<CR>")
 
 -- Close all without saving
 map("n", "<S-q>", ":q!<CR>")
+
