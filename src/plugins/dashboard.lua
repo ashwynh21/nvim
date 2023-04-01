@@ -52,6 +52,9 @@ db.setup({
 				action = "quit",
 			},
 		},
+    packages = { enable = true },
+    project = { enable = true, limit = 8, label = '', action = 'Telescope find_files cwd=' },
+    week_header = { enable = true },
 		footer = {},
 	},
 })
