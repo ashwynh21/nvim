@@ -183,10 +183,6 @@ return require("packer").startup({
 				require("src.plugins.lightbulb")
 			end,
 		})
-		use({
-			"weilbith/nvim-code-action-menu",
-			cmd = "CodeActionMenu",
-		})
 		-----------------------------------
 		-- LSP, Completions and Snippets --
 		-----------------------------------

@@ -23,6 +23,7 @@ local function on_attach(client, buf)
 	-- Only highlight if compatible with the language
 	vim.o.updatetime = 1000
 	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+
 	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.hover(nil, {focus=false})]])
 
 	if cap.document_highlight then

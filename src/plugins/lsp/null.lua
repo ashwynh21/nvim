@@ -34,6 +34,7 @@ nls.setup({
 		------------------
 		-- cda.eslint,
 		-- cda.shellcheck,
+		nls.builtins.code_actions.gitsigns,
 	},
 	on_attach = function(client, bufnr)
 		U.mappings(bufnr)

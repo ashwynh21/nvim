@@ -286,14 +286,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\ashwy\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-code-action-menu"] = {
-    commands = { "CodeActionMenu" },
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "C:\\Users\\ashwy\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-code-action-menu",
-    url = "https://github.com/weilbith/nvim-code-action-menu"
-  },
   ["nvim-lightbulb"] = {
     config = { "\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26src.plugins.lightbulb\frequire\0" },
     loaded = true,
@@ -309,7 +301,7 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-ts-context-commentstring", "nvim-treesitter-textobjects", "nvim-ts-autotag", "playground", "nvim-treesitter-refactor" },
+    after = { "nvim-treesitter-textobjects", "nvim-treesitter-refactor", "nvim-ts-context-commentstring", "playground", "nvim-ts-autotag" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -418,14 +410,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for neo-tree.nvim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24src.plugins.neotree\frequire\0", "config", "neo-tree.nvim")
 time([[Config for neo-tree.nvim]], false)
--- Config for: git.nvim
-time([[Config for git.nvim]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20src.plugins.git\frequire\0", "config", "git.nvim")
-time([[Config for git.nvim]], false)
--- Config for: nvim-lightbulb
-time([[Config for nvim-lightbulb]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26src.plugins.lightbulb\frequire\0", "config", "nvim-lightbulb")
-time([[Config for nvim-lightbulb]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27src.plugins.bufferline\frequire\0", "config", "bufferline.nvim")
+time([[Config for bufferline.nvim]], false)
 -- Config for: git-conflict.nvim
 time([[Config for git-conflict.nvim]], true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
@@ -434,34 +422,26 @@ time([[Config for git-conflict.nvim]], false)
 time([[Config for nvim-web-devicons]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22nvim-web-devicons\frequire\0", "config", "nvim-web-devicons")
 time([[Config for nvim-web-devicons]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27src.plugins.bufferline\frequire\0", "config", "bufferline.nvim")
-time([[Config for bufferline.nvim]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'CodeActionMenu', function(cmdargs)
-          require('packer.load')({'nvim-code-action-menu'}, { cmd = 'CodeActionMenu', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-code-action-menu'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('CodeActionMenu ', 'cmdline')
-      end})
-time([[Defining lazy-load commands]], false)
-
+-- Config for: git.nvim
+time([[Config for git.nvim]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20src.plugins.git\frequire\0", "config", "git.nvim")
+time([[Config for git.nvim]], false)
+-- Config for: nvim-lightbulb
+time([[Config for nvim-lightbulb]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26src.plugins.lightbulb\frequire\0", "config", "nvim-lightbulb")
+time([[Config for nvim-lightbulb]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au LspAttach * ++once lua require("packer.load")({'lspsaga.nvim'}, { event = "LspAttach *" }, _G.packer_plugins)]]
 vim.cmd [[au WinScrolled * ++once lua require("packer.load")({'neoscroll.nvim'}, { event = "WinScrolled *" }, _G.packer_plugins)]]
+vim.cmd [[au LspAttach * ++once lua require("packer.load")({'lspsaga.nvim'}, { event = "LspAttach *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp', 'LuaSnip'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'lualine.nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au CursorHold * ++once lua require("packer.load")({'friendly-snippets', 'telescope.nvim', 'nvim-treesitter'}, { event = "CursorHold *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'git-messenger.vim', 'nvim-lspconfig', 'gitsigns.nvim', 'hop.nvim', 'indent-blankline.nvim', 'null-ls.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'nvim-autopairs'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
-vim.cmd [[au CursorHold * ++once lua require("packer.load")({'telescope.nvim', 'nvim-treesitter', 'friendly-snippets'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'LuaSnip', 'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'null-ls.nvim', 'git-messenger.vim', 'gitsigns.nvim', 'hop.nvim', 'nvim-lspconfig', 'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

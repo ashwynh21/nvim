@@ -10,5 +10,5 @@ require("neo-tree").setup({
 			hide_gitignored = false,
 		},
 	},
-	window = { width = 36 },
+	window = { width = 38 },
 })
