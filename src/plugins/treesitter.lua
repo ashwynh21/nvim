@@ -1,7 +1,7 @@
 -- Treesitter folds
--- vim.o.foldmethod = 'expr'
--- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
--- vim.o.foldlevelstart = 99
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevelstart = 99
 
 require("nvim-treesitter.install").compilers = { "clang", "zig", "gcc" }
 require("nvim-treesitter.install").target = "x86_64-w64-windows-gnu"
@@ -27,7 +27,7 @@ require("nvim-treesitter.configs").setup({
 		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
 		-- Using this option may slow down your editor, and you may see some duplicate highlights.
 		-- Instead of true it can also be a list of languages
-		-- additional_vim_regex_highlighting = false,
+		additional_vim_regex_highlighting = false,
 	},
 	indent = {
 		enable = true,

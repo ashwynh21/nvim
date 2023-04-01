@@ -16,11 +16,11 @@ nls.setup({
 		}),
 		-- NOTE:
 		-- 1. both needs to be enabled to so prettier can apply eslint fixes
-		-- 2. prettierd should come first to prevent occassional race condition
+		-- 2. prettierd should come first to prevent occasional race condition
 		fmt.eslint,
 		fmt.prettier,
 		fmt.stylua,
-		fmt.gofmt,
+		fmt.golines,
 		fmt.shfmt.with({
 			extra_args = { "-i", 2, "-ci", "-sr" },
 		}),
@@ -29,12 +29,14 @@ nls.setup({
 		-----------------
 		dgn.eslint,
 		dgn.shellcheck,
+		dgn.misspell,
+		dgn.gospel,
 		------------------
 		-- CODE ACTIONS --
 		------------------
 		-- cda.eslint,
 		-- cda.shellcheck,
-		nls.builtins.code_actions.gitsigns,
+		-- nls.builtins.code_actions.gitsigns,
 	},
 	on_attach = function(client, bufnr)
 		U.mappings(bufnr)

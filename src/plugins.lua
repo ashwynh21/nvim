@@ -55,7 +55,14 @@ return require("packer").startup({
 			end,
 		})
 		use({
+			"fgheng/winbar.nvim",
+			config = function()
+				require("src.plugins.winbar")
+			end,
+		})
+		use({
 			"phaazon/hop.nvim",
+			branch = "v2",
 			event = "BufRead",
 			config = function()
 				require("src.plugins.hop")
@@ -136,6 +143,12 @@ return require("packer").startup({
 				end,
 			},
 			{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+		})
+		use({
+			"norcalli/nvim-colorizer.lua",
+      config = function ()
+        require("colorizer").setup()
+      end
 		})
 
 		--------------------------
