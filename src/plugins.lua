@@ -69,13 +69,6 @@ return require("packer").startup({
 			end,
 		})
 		use({
-			"karb94/neoscroll.nvim",
-			event = "WinScrolled",
-			config = function()
-				require("neoscroll").setup({ hide_cursor = false })
-			end,
-		})
-		use({
 			"glepnir/dashboard-nvim",
 			event = "VimEnter",
 			config = function()
@@ -146,9 +139,9 @@ return require("packer").startup({
 		})
 		use({
 			"norcalli/nvim-colorizer.lua",
-      config = function ()
-        require("colorizer").setup()
-      end
+			config = function()
+				require("colorizer").setup()
+			end,
 		})
 
 		--------------------------
@@ -204,7 +197,6 @@ return require("packer").startup({
 			event = "BufRead",
 			config = function()
 				require("src.plugins.lsp.servers")
-				require("src.plugins.mason")
 			end,
 			requires = {
 				{
@@ -261,6 +253,43 @@ return require("packer").startup({
 			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+		})
+		use({
+			"mfussenegger/nvim-dap",
+			opt = true,
+			event = "BufReadPre",
+			module = { "dap" },
+			wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+			requires = {
+				"Pocco81/DAPInstall.nvim",
+				"theHamsta/nvim-dap-virtual-text",
+				"rcarriga/nvim-dap-ui",
+				"mfussenegger/nvim-dap-python",
+				"nvim-telescope/telescope-dap.nvim",
+				{ "leoluz/nvim-dap-go", module = "dap-go" },
+				{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
+			},
+			config = function()
+				-- require("src.plugins.dap.init").setup()
+			end,
+		})
+		use({
+			"jay-babu/mason-nvim-dap.nvim",
+		})
+		use({
+			"Pocco81/DAPInstall.nvim",
+		})
+		use({
+			"folke/which-key.nvim",
+			config = function()
+				vim.o.timeout = true
+				vim.o.timeoutlen = 300
+				require("which-key").setup({
+					-- your configuration comes here
+					-- or leave it empty to use the default settings
+					-- refer to the configuration section below
+				})
+			end,
 		})
 		-- NOTE: nvim-autopairs needs to be loaded after nvim-cmp, so that <CR> would work properly
 		use({
