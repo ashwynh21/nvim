@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local which = require("which-key")
 
 local U = {}
 
@@ -21,23 +22,30 @@ end
 ---Creates LSP mappings
 ---@param buf number
 function U.mappings(buf)
-	local opts = { buffer = buf }
-	map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({timeout_ms = 20000})<CR>", opts)
-	map("n", "<leader>gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	map("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	map("n", "td", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	map("n", "<leader>c", "<cmd>Lspsaga code_action<CR>", opts)
-	map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	map("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-	map("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-	map("n", "<space>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-	-- map('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-	-- map('n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+	local keys = {
+		["<leader>f"] = { "<cmd>lua vim.lsp.buf.format({timeout_ms = 20000})<cr>", "Format File" },
+		["<leader>gd"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go To Declaration" },
+		["<leader>r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Refactor Name" },
+		["<leader>c"] = { "<cmd>Lspsaga code_action<cr>", "Code Actions" },
+		["<leader>e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Diagnostics" },
+		["<C-h>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
+		g = {
+			d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go To Definition" },
+			h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Information" },
+			i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Go To Implementation" },
+			r = { "<cmd>lua vim.lsp.buf.references()<cr>", "Show References" },
+			t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
+		},
+	}
+
+	which.register(keys, {
+		mode = "n",
+		prefix = "",
+		buffer = buf,
+		silent = true,
+		noremap = true,
+		nowait = false,
+	})
 end
 
 return U
