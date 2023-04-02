@@ -46,16 +46,9 @@ db.setup({
 				action = "edit C:/Users/ashwyn/AppData/Local/nvim/init.lua",
 				key = "\\ v",
 			},
-			{
-				icon = " ",
-				desc = "Exit Neovim              ",
-				action = "quit",
-			},
 		},
     packages = { enable = true },
     project = { enable = true, limit = 8, label = '', action = 'Telescope find_files cwd=' },
-    week_header = { enable = true },
 		footer = {},
 	},
 })
-vim.keymap.set("n", "<Leader>o", ":DashboardNewFile<CR>", { silent = true })
