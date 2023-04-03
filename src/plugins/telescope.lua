@@ -6,10 +6,10 @@ require("telescope").setup({
 		prompt_prefix = " ❯ ",
 		initial_mode = "insert",
 		sorting_strategy = "ascending",
-    file_ignore_patterns = {
-      "node_modules",
-      ".git",
-    },
+		file_ignore_patterns = {
+			"node_modules",
+			".git",
+		},
 		layout_config = {
 			prompt_position = "top",
 		},
@@ -56,19 +56,24 @@ _G.Telescope = setmetatable({}, {
 	end,
 })
 
--- Ctrl-p = fuzzy finder
-vim.keymap.set("n", "<leader>ff", "<CMD>lua Telescope.find_files({ hidden = true })<CR>")
+local keymaps = {
+	f = {
+		a = { "<cmd>lua vim.lsp.buf.format({timeout_ms = 20000})<cr>", "Format File" },
+		f = { "<cmd>lua Telescope.find_files({ hidden = true })<cr>", "Find File" },
+		h = { "<cmd>lua Telescope.help_tags()<cr>", "Help Tags" },
+		b = { "<cmd>lua Telescope.buffers()<cr>", "Find Buffer" },
+		g = { "<cmd>lua Telescope.live_grep()<cr>", "Live Grep" },
+		c = { "<cmd>lua Telescope.git_status()<cr>", "Git Status" },
+	},
+}
 
--- Get :help at the speed of light
-vim.keymap.set("n", "<leader>fh", "<CMD>lua Telescope.help_tags()<CR>")
-
--- Fuzzy find active buffers
-vim.keymap.set("n", "<leader>fb", "<CMD>lua Telescope.buffers()<CR>")
-
--- Search for string
-vim.keymap.set("n", "<leader>fg", "<CMD>lua Telescope.live_grep()<CR>")
-
--- Fuzzy find changed files in git
-vim.keymap.set("n", "<leader>fc", "<CMD>lua Telescope.git_status()<CR>")
+require("which-key").register(keymaps, {
+	mode = "n",
+	prefix = "<leader>",
+	buffer = nil,
+	silent = false,
+	noremap = true,
+	nowait = false,
+})
 
 require("telescope").load_extension("file_browser")

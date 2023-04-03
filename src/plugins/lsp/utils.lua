@@ -23,7 +23,6 @@ end
 ---@param buf number
 function U.mappings(buf)
 	local keys = {
-		["<leader>f"] = { "<cmd>lua vim.lsp.buf.format({timeout_ms = 20000})<cr>", "Format File" },
 		["<leader>gd"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go To Declaration" },
 		["<leader>r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Refactor Name" },
 		["<leader>c"] = { "<cmd>Lspsaga code_action<cr>", "Code Actions" },

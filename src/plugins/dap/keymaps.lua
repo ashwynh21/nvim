@@ -30,7 +30,7 @@ function M.setup()
 			t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
 			x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
 			u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-      l = { [[:lua require"osv".launch({port = 8086})<CR>]], "Launch Debug Server"}
+			l = { [[:lua require"osv".launch({port = 8086})<CR>]], "Launch Debug Server" },
 		},
 	}
 

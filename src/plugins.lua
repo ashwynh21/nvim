@@ -21,15 +21,14 @@ return require("packer").startup({
 		--   Navigation    --
 		---------------------
 		use({
-			"nvim-neo-tree/neo-tree.nvim",
-			branch = "v2.x",
+			"nvim-tree/nvim-tree.lua",
 			requires = {
-				"nvim-lua/plenary.nvim",
-				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-				"MunifTanjim/nui.nvim",
+				"nvim-tree/nvim-web-devicons", -- optional
+				"antosha417/nvim-lsp-file-operations",
+				"echasnovski/mini.base16",
 			},
 			config = function()
-				require("src.plugins.neotree")
+				require("src.plugins.nvimtree")
 			end,
 		})
 
@@ -254,6 +253,7 @@ return require("packer").startup({
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 		})
+    --[[
 		use({
 			"mfussenegger/nvim-dap",
 			opt = true,
@@ -279,6 +279,7 @@ return require("packer").startup({
 		use({
 			"Pocco81/DAPInstall.nvim",
 		})
+    --]]
 		use({
 			"folke/which-key.nvim",
 			config = function()
