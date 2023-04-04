@@ -12,10 +12,10 @@ require("bufferline").setup({
 		offsets = {
 			{
 				filetype = "neo-tree",
-				text = "File Explorer",
+				text = vim.fn.getcwd(),
 				highlight = "Directory",
 				text_align = "center",
-        padding = 1,
+        padding = 0,
 			},
 		},
 	},
