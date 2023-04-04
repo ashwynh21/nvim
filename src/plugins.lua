@@ -21,17 +21,17 @@ return require("packer").startup({
 		--   Navigation    --
 		---------------------
 		use({
-			"nvim-tree/nvim-tree.lua",
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v2.x",
 			requires = {
-				"nvim-tree/nvim-web-devicons", -- optional
-				"antosha417/nvim-lsp-file-operations",
-				"echasnovski/mini.base16",
+				"nvim-lua/plenary.nvim",
+				"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+				"MunifTanjim/nui.nvim",
 			},
-			config = function()
-				require("src.plugins.nvimtree")
-			end,
+      config = function ()
+        require("src.plugins.neotree")
+      end
 		})
-
 		use({
 			{
 				"nvim-telescope/telescope.nvim",
@@ -253,7 +253,7 @@ return require("packer").startup({
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 		})
-    --[[
+		--[[
 		use({
 			"mfussenegger/nvim-dap",
 			opt = true,

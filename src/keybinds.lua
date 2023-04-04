@@ -2,7 +2,8 @@ local which = require("which-key")
 
 local keymap = {
   ["<leader>"] = {
-    t = { ":NvimTreeToggle<cr>", "Toggle NeoTree" },
+    t = { ":Neotree toggle left<cr>", "Toggle NeoTree" },
+    g = { ":Neotree git_status toggle float<cr>", "Toggle Git Status" },
     ["["] = { ":bp<cr>", "Previous Tab" },
     ["]"] = { ":bn<cr>", "Next Tab" }
   },
