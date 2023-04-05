@@ -21,19 +21,11 @@ local function on_attach(client, buf)
 	local cap = client.server_capabilities
 
 	vim.o.updatetime = 1000
-	vim.cmd([[autocmd CursorHold,CursorHoldI * silent! lua vim.diagnostic.open_float(nil, {focus=false})]])
-
-	if cap.hoverProvider then
-		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-			command = "silent! lua vim.lsp.buf.hover(nil, {focus = false})",
-			pattern = "*",
-		})
-	end
-
 	if cap.document_highlight then
 		vim.cmd([[
       augroup LspHighlight
 		    autocmd!
+        autocmd CursorHold,CursorHoldI * silent! lua vim.diagnostic.open_float(nil, {focus=false})
 		    autocmd CursorHold,CursorHoldI * silent! lua vim.lsp.buf.document_highlight()
 		    autocmd CursorMoved * silent! lua vim.lsp.buf.clear_references()
 		  augroup END

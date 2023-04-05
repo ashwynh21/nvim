@@ -27,6 +27,7 @@ function U.mappings(buf)
 		["<leader>r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Refactor Name" },
 		["<leader>c"] = { "<cmd>Lspsaga code_action<cr>", "Code Actions" },
 		["<leader>e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Diagnostics" },
+    ["<leader>h"] = { "<cmd>lua vim.lsp.buf.hover(nil, {focus=false})<cr>", "Hover" },
 		["<C-h>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
 		g = {
 			d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go To Definition" },
