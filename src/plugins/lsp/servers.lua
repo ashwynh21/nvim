@@ -189,4 +189,27 @@ require("mason-lspconfig").setup_handlers({
 			root_dir = require("lspconfig.util").find_git_ancestor,
 		})
 	end,
+
+	["yamlls"] = function()
+		lsp.yamlls.setup({
+			flags = flags,
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+				yaml = {
+					hover = true,
+					format = {
+						enable = true,
+						singleQuote = true,
+					},
+					completion = true,
+					validate = true,
+					customTags = {
+						"!Ref scalar",
+						"!Sub scalar",
+					},
+				},
+			},
+		})
+	end,
 })

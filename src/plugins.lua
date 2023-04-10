@@ -28,9 +28,9 @@ return require("packer").startup({
 				"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 				"MunifTanjim/nui.nvim",
 			},
-      config = function ()
-        require("src.plugins.neotree")
-      end
+			config = function()
+				require("src.plugins.neotree")
+			end,
 		})
 		use({
 			{
@@ -253,33 +253,6 @@ return require("packer").startup({
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 		})
-		--[[
-		use({
-			"mfussenegger/nvim-dap",
-			opt = true,
-			event = "BufReadPre",
-			module = { "dap" },
-			wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
-			requires = {
-				"Pocco81/DAPInstall.nvim",
-				"theHamsta/nvim-dap-virtual-text",
-				"rcarriga/nvim-dap-ui",
-				"mfussenegger/nvim-dap-python",
-				"nvim-telescope/telescope-dap.nvim",
-				{ "leoluz/nvim-dap-go", module = "dap-go" },
-				{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
-			},
-			config = function()
-				-- require("src.plugins.dap.init").setup()
-			end,
-		})
-		use({
-			"jay-babu/mason-nvim-dap.nvim",
-		})
-		use({
-			"Pocco81/DAPInstall.nvim",
-		})
-    --]]
 		use({
 			"folke/which-key.nvim",
 			config = function()
@@ -304,6 +277,7 @@ return require("packer").startup({
 		use({
 			"onsails/lspkind.nvim",
 		})
+		use("nvim-lua/popup.nvim")
 	end,
 	config = {
 		display = {
