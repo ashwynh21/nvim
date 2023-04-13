@@ -237,6 +237,9 @@ return require("packer").startup({
 					{
 						"L3MON4D3/LuaSnip",
 						event = "InsertEnter",
+						tag = "v<CurrentMajor>.*",
+						-- install jsregexp (optional!:).
+						run = "make install_jsregexp",
 						config = function()
 							require("src.plugins.lsp.luasnip")
 						end,

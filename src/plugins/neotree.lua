@@ -6,8 +6,8 @@ require("neo-tree").setup({
 	sort_case_insensitive = false,
 	filesystem = {
 		filtered_items = {
-			hide_dotfiles = false,
-			hide_gitignored = false,
+			hide_dotfiles = true,
+			hide_gitignored = true,
 		},
 		use_libuv_file_watcher = true,
 		follow_current_file = true,
