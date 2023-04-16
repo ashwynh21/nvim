@@ -1,7 +1,8 @@
 -- Treesitter folds
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldlevelstart = 99
+vim.o.foldlevelstart = 0
+vim.o.nofoldenable = "fen"
 
 require("nvim-treesitter.install").compilers = { "clang", "zig", "gcc" }
 require("nvim-treesitter.install").target = "x86_64-w64-windows-gnu"
@@ -9,6 +10,7 @@ require("nvim-treesitter.install").target = "x86_64-w64-windows-gnu"
 require("nvim-treesitter.configs").setup({
 	-- nvim-treesitter/nvim-treesitter (self config)
 	auto_install = true,
+  sync_install = false,
 	ensure_installed = {
 		"lua",
 		"javascript",
@@ -77,8 +79,8 @@ require("nvim-treesitter.configs").setup({
 				["<leader>e"] = "@element",
 			},
 			swap_previous = {
-				["<leader>A"] = "@parameter.inner",
 				["<leader>F"] = "@function.outer",
+				["<leader>A"] = "@parameter.inner",
 				["<leader>E"] = "@element",
 			},
 		},

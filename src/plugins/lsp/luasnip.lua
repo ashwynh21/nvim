@@ -19,10 +19,7 @@ luasnip.setup({
 	},
 })
 -- Loading any vscode snippets from plugins
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_lua").lazy_load()
-require("luasnip.loaders.from_snipmate").lazy_load()
-
+require("luasnip.loaders.from_lua").lazy_load({ path = "../snippets/" })
 -- Allow jsx and tsx to use js snippets
 require("luasnip").filetype_extend("javascript", { "javascriptreact", "typescriptreact" })
 
@@ -32,7 +29,7 @@ vim.keymap.set("i", "<S-Up>", '<cmd>lua require("luasnip").jump(-1)<cr>')
 vim.keymap.set("s", "<S-Down>", '<cmd>lua require("luasnip").jump(1)<cr>')
 vim.keymap.set("s", "<S-Up>", '<cmd>lua require("luasnip").jump(-1)<cr>')
 
-vim.keymap.set({ "i", "s" }, "<a-f>", function ()
+vim.keymap.set({ "i", "s" }, "<A-f>", function ()
   if luasnip.expand_or_jumpable() then
     luasnip.expand()
   end

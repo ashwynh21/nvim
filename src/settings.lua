@@ -26,14 +26,15 @@ o.cursorline = true
 
 -- Better editing experience
 o.expandtab = true
--- o.smarttab = true
+o.smarttab = true
+o.smartindent = true
 o.cindent = true
 -- o.autoindent = true
 o.wrap = true
 o.textwidth = 300
 o.tabstop = 2
-o.shiftwidth = 0
-o.softtabstop = -1 -- If negative, shiftwidth value is used
+o.shiftwidth = 2
+o.softtabstop = 2 -- If negative, shiftwidth value is used
 o.list = true
 o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
 -- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
@@ -53,7 +54,8 @@ o.undofile = true
 o.swapfile = false
 -- o.backupdir = '/tmp/'
 -- o.directory = '/tmp/'
--- o.undodir = '/tmp/'
+o.undodir = '/tmp/'
+o.undofile = true
 
 -- Remember 50 items in commandline history
 o.history = 50
@@ -62,6 +64,8 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 
+o.hlsearch = true
+o.incsearch = true
 -- Preserve view while jumping
 -- o.jumpoptions = 'view'
 

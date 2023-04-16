@@ -112,6 +112,7 @@ return require("packer").startup({
 		use({
 			"loctvl842/monokai-pro.nvim",
 		})
+		use({ "rose-pine/neovim", as = "rose-pine" })
 		-----------------------------------
 		-- Treesitter: Better Highlights --
 		-----------------------------------
@@ -234,27 +235,27 @@ return require("packer").startup({
 					require("src.plugins.lsp.nvim-cmp")
 				end,
 				requires = {
-					{
-						"L3MON4D3/LuaSnip",
-						event = "InsertEnter",
-						tag = "v<CurrentMajor>.*",
-						-- install jsregexp (optional!:).
-						run = "make install_jsregexp",
-						config = function()
-							require("src.plugins.lsp.luasnip")
-						end,
-						requires = {
-							{
-								"rafamadriz/friendly-snippets",
-								event = "CursorHold",
-							},
-						},
-					},
+					"L3MON4D3/LuaSnip",
 				},
 			},
 			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+		})
+		use({
+			"L3MON4D3/LuaSnip",
+			tag = "v<CurrentMajor>.*",
+			-- install jsregexp (optional!:).
+			run = "make install_jsregexp",
+			config = function()
+				require("src.plugins.lsp.luasnip")
+			end,
+			requires = {
+				{
+					"rafamadriz/friendly-snippets",
+					event = "CursorHold",
+				},
+			},
 		})
 		use({
 			"folke/which-key.nvim",
