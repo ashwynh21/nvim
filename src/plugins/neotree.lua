@@ -1,9 +1,22 @@
 require("neo-tree").setup({
-	close_if_last_window = false,
+	close_if_last_window = true,
 	enable_diagnostics = true,
 	enable_git_status = true,
 	popup_border_style = "rounded",
 	sort_case_insensitive = false,
+	buffers = {
+		follow_current_file = true, -- This will find and focus the file in the active buffer every
+		-- time the current file is changed while the tree is open.
+		group_empty_dirs = true, -- when true, empty folders will be grouped together
+		show_unloaded = true,
+		window = {
+			mappings = {
+				["bd"] = "buffer_delete",
+				["<bs>"] = "navigate_up",
+				["."] = "set_root",
+			},
+		},
+	},
 	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
@@ -11,14 +24,23 @@ require("neo-tree").setup({
 		},
 		use_libuv_file_watcher = true,
 		follow_current_file = true,
-    bind_to_cwd = true,
-    cwd_target = {
-      sidebar = "tab",
-      current = "window",
-    },
+		bind_to_cwd = true,
+		cwd_target = {
+			sidebar = "tab",
+			current = "window",
+		},
 	},
-	window = { width = 40 },
+	window = {
+		width = 40,
+		mappings = {
+			["<leader>p"] = { "toggle_preview", config = { use_float = true } },
+			["<leader>l"] = { "focus_preview" },
+		},
+	},
 	default_component_configs = {
+		container = {
+			enable_character_fade = true,
+		},
 		icon = {
 			folder_closed = "",
 			folder_open = "",
@@ -31,7 +53,7 @@ require("neo-tree").setup({
 			highlight = "NeoTreeModified",
 		},
 		name = {
-			trailing_slash = false,
+			trailing_slash = true,
 			use_git_status_colors = true,
 			highlight = "NeoTreeFileName",
 		},
@@ -69,7 +91,7 @@ require("neo-tree").setup({
 		winbar = false, -- toggle to show selector on winbar
 		statusline = false, -- toggle to show selector on statusline
 		show_scrolled_off_parent_node = false, -- boolean
-		tab_labels = { -- table
+	  sources = { -- table
 			filesystem = "  Files ", -- string | nil
 			buffers = "  Buffers ", -- string | nil
 			git_status = "  Git ", -- string | nil

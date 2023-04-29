@@ -121,7 +121,7 @@ return require("packer").startup({
 				"nvim-treesitter/nvim-treesitter",
 				event = "CursorHold",
 				run = ":TSUpdate",
-				confid = function()
+				config = function()
 					require("src.plugins.treesitter")
 				end,
 			},
@@ -143,7 +143,6 @@ return require("packer").startup({
 				require("colorizer").setup()
 			end,
 		})
-
 		--------------------------
 		-- Editor UI Niceties --
 		--------------------------

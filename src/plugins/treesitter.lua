@@ -1,8 +1,7 @@
 -- Treesitter folds
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldlevelstart = 0
-vim.o.nofoldenable = "fen"
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevelstart = 99
 
 require("nvim-treesitter.install").compilers = { "clang", "zig", "gcc" }
 require("nvim-treesitter.install").target = "x86_64-w64-windows-gnu"
@@ -10,7 +9,7 @@ require("nvim-treesitter.install").target = "x86_64-w64-windows-gnu"
 require("nvim-treesitter.configs").setup({
 	-- nvim-treesitter/nvim-treesitter (self config)
 	auto_install = true,
-  sync_install = false,
+	sync_install = false,
 	ensure_installed = {
 		"lua",
 		"javascript",
@@ -31,17 +30,17 @@ require("nvim-treesitter.configs").setup({
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
 	},
-	indent = {
-		enable = true,
-	},
+  indent = {
+    enable = true,
+  },
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "gs",
+			init_selection = "ss",
 			-- NOTE: These are visual mode mappings
-			node_incremental = "gs",
-			node_decremental = "gS",
-			scope_incremental = "<leader>gc",
+			node_incremental = "ss",
+			node_decremental = "sS",
+			scope_incremental = "<leader>sc",
 		},
 	},
 	-- nvim-treesitter/nvim-treesitter-textobjects
@@ -129,4 +128,3 @@ require("nvim-treesitter.configs").setup({
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
-
