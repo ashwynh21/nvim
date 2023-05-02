@@ -8,7 +8,8 @@ local nmap = {
 		["]"] = { ":bn<cr>", "Next Tab" },
 	},
 	["<C-s>"] = { ":w!<cr>", "Save Changes" },
-	["<S-q>"] = { ":bw<cr>:bp<cr>", "Close File" },
+	["<S-c>"] = { ":bw<cr>:bp<cr>", "Close File" },
+	["<S-q>"] = { ":qa<cr>", "Quit" },
 }
 
 local vmap = {

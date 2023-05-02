@@ -1,5 +1,5 @@
 require("neo-tree").setup({
-	close_if_last_window = true,
+	close_if_last_window = false,
 	enable_diagnostics = true,
 	enable_git_status = true,
 	popup_border_style = "rounded",
@@ -91,7 +91,7 @@ require("neo-tree").setup({
 		winbar = false, -- toggle to show selector on winbar
 		statusline = false, -- toggle to show selector on statusline
 		show_scrolled_off_parent_node = false, -- boolean
-	  sources = { -- table
+		sources = { -- table
 			filesystem = "  Files ", -- string | nil
 			buffers = "  Buffers ", -- string | nil
 			git_status = "  Git ", -- string | nil

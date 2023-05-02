@@ -241,6 +241,9 @@ return require("packer").startup({
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 		})
+    use({
+      "github/copilot.vim",
+    })
 		use({
 			"L3MON4D3/LuaSnip",
 			tag = "v<CurrentMajor>.*",

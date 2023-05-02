@@ -1,7 +1,7 @@
-local ls = require("luasnip") --{{{
-local s = ls.s --> snippet
-local i = ls.i --> insert node
-local t = ls.t --> text node
+local ls = require("luasnip")
+local s = ls.s
+local i = ls.i
+local t = ls.t
 
 local d = ls.dynamic_node
 local c = ls.choice_node
@@ -11,12 +11,12 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
-local snippets, autosnippets = {}, {} --}}}
+local snippets, autosnippets = {}, {}
 
 local group = vim.api.nvim_create_augroup("Lua Snippets", { clear = true })
 local file_pattern = "*.lua"
 
-local function cs(trigger, nodes, opts) --{{{
+local function cs(trigger, nodes, opts)
 	local snippet = s(trigger, nodes)
 	local target_table = snippets
 
@@ -65,18 +65,16 @@ local function cs(trigger, nodes, opts) --{{{
 		end
 	end
 
-	table.insert(target_table, snippet) -- insert snippet into appropriate table
-end --}}}
+	table.insert(target_table, snippet)
+end
 
--- Start Refactoring --
-
-cs("CMD", { -- [CMD] multiline vim.cmd{{{
+cs("CMD", {
 	t({ "vim.cmd[[", "  " }),
 	i(1, ""),
 	t({ "", "]]" }),
 }) --}}}
-cs("cmd", fmt("vim.cmd[[{}]]", { i(1, "") })) -- single line vim.cmd
-cs({ -- github import for packer{{{
+cs("cmd", fmt("vim.cmd[[{}]]", { i(1, "") }))
+cs({
 	trig = "https://github%.com/([%w-%._]+)/([%w-%._]+)!",
 	regTrig = true,
 	hidden = true,
@@ -91,9 +89,9 @@ cs({ -- github import for packer{{{
 	end),
 	t({ [["]], "" }),
 	i(1, ""),
-}, "auto") --}}}
+}, "auto")
 
-cs( -- {regexSnippet} LuaSnippet{{{
+cs(
 	"regexSnippet",
 	fmt(
 		[=[
@@ -112,8 +110,9 @@ cs( -- {}
 		}
 	),
 	{ pattern = "*/snippets/*.lua", "<C-d>" }
-) --}}}
-cs( -- [luaSnippet] LuaSnippet{{{
+)
+
+cs(
 	"luaSnippet",
 	fmt(
 		[=[
@@ -137,9 +136,9 @@ cs("{}", fmt( -- {}
 		}
 	),
 	{ pattern = "*/snippets/*.lua", "jcs" }
-) --}}}
+)
 
-cs( -- choice_node_snippet luaSnip choice node{{{
+cs(
 	"choice_node_snippet",
 	fmt(
 		[[ 
@@ -151,9 +150,9 @@ c({}, {{ {} }}),
 		}
 	),
 	{ pattern = "*/snippets/*.lua", "jcn" }
-) --}}}
+)
 
-cs( -- [function] Lua function snippet{{{
+cs(
 	"function",
 	fmt(
 		[[ 
@@ -168,8 +167,8 @@ end
 		}
 	),
 	"jff"
-) --}}}
-cs( -- [local_function] Lua function snippet{{{
+)
+cs(
 	"local_function",
 	fmt(
 		[[ 
@@ -184,20 +183,16 @@ end
 		}
 	),
 	"jlf"
-) --}}}
-cs( -- [local] Lua local variable snippet{{{
+)
+cs(
 	"local",
 	fmt(
 		[[ 
 local {} = {}
   ]],
-		{ i(1, ""), i(2, "") }
+		{ i(1, "name"), i(2, "value") }
 	),
 	"jj"
-) --}}}
-
--- Tutorial Snippets go here --
-
--- End Refactoring --
+)
 
 return snippets, autosnippets
