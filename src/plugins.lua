@@ -174,6 +174,10 @@ return require("packer").startup({
 			end,
 		})
 		use({
+			"f-person/git-blame.nvim",
+			config = function() end,
+		})
+		use({
 			"akinsho/git-conflict.nvim",
 			tag = "*",
 			config = function()
@@ -193,7 +197,14 @@ return require("packer").startup({
 			tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 			config = function()
 				require("src.plugins.surround")
-      end,
+			end,
+		})
+		use({
+			"folke/trouble.nvim",
+			requires = "nvim-tree/nvim-web-devicons",
+			config = function()
+				require("src.plugins.trouble")
+			end,
 		})
 		-----------------------------------
 		-- LSP, Completions and Snippets --
