@@ -64,6 +64,10 @@ local keymaps = {
 		b = { "<cmd>lua Telescope.buffers()<cr>", "Find Buffer" },
 		g = { "<cmd>lua Telescope.live_grep()<cr>", "Live Grep" },
 		c = { "<cmd>lua Telescope.git_status()<cr>", "Git Status" },
+
+    t = { "<cmd>FloatermToggle<cr>", "Toggle Terminal" },
+    n = { "<cmd>FloatermNew<cr>", "New Terminal" },
+    x = { "<cmd>FloatermKill!<cr>", "Kill Terminal" }
 	},
 }
 

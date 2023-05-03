@@ -78,7 +78,7 @@ return require("packer").startup({
 		use({
 			"nvim-telescope/telescope-file-browser.nvim",
 		})
-
+		use("voldikss/vim-floaterm")
 		----------------------------------------
 		-- Theme, Icons, Statusbar, Bufferbar --
 		----------------------------------------
