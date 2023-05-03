@@ -188,6 +188,13 @@ return require("packer").startup({
 				require("src.plugins.lightbulb")
 			end,
 		})
+		use({
+			"kylechui/nvim-surround",
+			tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+			config = function()
+				require("src.plugins.surround")
+      end,
+		})
 		-----------------------------------
 		-- LSP, Completions and Snippets --
 		-----------------------------------
@@ -241,9 +248,6 @@ return require("packer").startup({
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 		})
-    use({
-      "github/copilot.vim",
-    })
 		use({
 			"L3MON4D3/LuaSnip",
 			tag = "v<CurrentMajor>.*",

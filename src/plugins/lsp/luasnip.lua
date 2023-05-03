@@ -34,7 +34,7 @@ vim.keymap.set("i", "<S-Left>", '<cmd>lua require("luasnip").jump(-1)<cr>')
 vim.keymap.set("s", "<S-Right>", '<cmd>lua require("luasnip").jump(1)<cr>')
 vim.keymap.set("s", "<S-Left>", '<cmd>lua require("luasnip").jump(-1)<cr>')
 
-vim.keymap.set({ "i", "s" }, "<S-f>", function ()
+vim.keymap.set({ "i", "s" }, "<C-f>", function ()
   if luasnip.expand_or_jumpable() then
     luasnip.expand()
   end
