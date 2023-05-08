@@ -151,7 +151,6 @@ c({}, {{ {} }}),
 	),
 	{ pattern = "*/snippets/*.lua", "jcn" }
 )
-
 cs(
 	"function",
 	fmt(

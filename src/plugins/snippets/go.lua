@@ -86,5 +86,64 @@ func {}(t *testing.T) {{
 	),
 	"gtf"
 )
+cs(
+	"func",
+	fmt(
+		[[
+/**
+ * description - {}
+ * {}
+ * @returns - {}
+*/
+func{} {}({}) {} {{
+  {}
+}}
+  ]],
+		{
+			i(1, "add a function description"),
+			d(1, function(arg)
+				print(vim.inspect(arg))
+				-- split the string of arguments by the delimiter
+				local args = vim.split(arg[1][1], ",")
+
+				local format = "{}"
+				local nodes = { t("") }
+
+				for index = 1, #args do
+					if args[index] == "" then
+						return sn(1, { t("") })
+					end
+
+					format = format .. "\n{}"
+					table.insert(nodes, t(" * @param - " .. args[index]))
+				end
+
+				return sn(1, fmt(format, nodes))
+			end, 4),
+			rep(5),
+			c(2, {
+				-- or a func that is independent
+				t(""),
+				-- offer func that is attached to a struct type
+				sn(
+					1,
+					fmt(
+						[[
+ ({} *{})
+        ]],
+						{
+							i(1, "name"),
+							i(2, "type"),
+						}
+					)
+				),
+			}),
+			i(3, "name"),
+			i(4, ""),
+			i(5, ""),
+			i(6, "// TODO - implementation"),
+		}
+	)
+)
 
 return snippets, autosnippets

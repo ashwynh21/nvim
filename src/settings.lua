@@ -82,3 +82,5 @@ o.incsearch = true
 -- Map <leader> to space
 -- g.mapleader = ' '
 g.maplocalleader = " "
+
+vim.cmd([[set noshowmode]])

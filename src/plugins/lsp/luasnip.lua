@@ -29,17 +29,16 @@ luasnip.setup({
 })
 
 -- Mappins to move around inside snippets
-vim.keymap.set("i", "<S-Right>", '<cmd>lua require("luasnip").jump(1)<cr>')
-vim.keymap.set("i", "<S-Left>", '<cmd>lua require("luasnip").jump(-1)<cr>')
-vim.keymap.set("s", "<S-Right>", '<cmd>lua require("luasnip").jump(1)<cr>')
-vim.keymap.set("s", "<S-Left>", '<cmd>lua require("luasnip").jump(-1)<cr>')
+vim.keymap.set({"i", "s"}, "<a-s>", '<cmd>lua require("luasnip").jump(1)<cr>')
+vim.keymap.set({"i", "s"}, "<a-w>", '<cmd>lua require("luasnip").jump(-1)<cr>')
 
-vim.keymap.set({ "i", "s" }, "<C-f>", function ()
-  if luasnip.expand_or_jumpable() then
-    luasnip.expand()
-  end
+vim.keymap.set({"i", "s" }, "<a-d>", '<cmd>lua require("luasnip.extras.select_choice")()<cr>')
+
+vim.keymap.set({ "i", "s" }, "<a-f>", function()
+	if luasnip.expand_or_jumpable() then
+		luasnip.expand()
+	end
 end)
 
 vim.keymap.set("n", "<leader><cr>", "<cmd>LuaSnipEdit<cr>", { silent = true, noremap = true })
 vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <cr> /-- End Refactoring --<cr>O<esc>O]])
-
