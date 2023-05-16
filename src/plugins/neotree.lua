@@ -53,7 +53,7 @@ require("neo-tree").setup({
 			highlight = "NeoTreeModified",
 		},
 		name = {
-			trailing_slash = true,
+			trailing_slash = false,
 			use_git_status_colors = true,
 			highlight = "NeoTreeFileName",
 		},

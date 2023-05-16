@@ -44,6 +44,9 @@ return require("packer").startup({
 				"nvim-telescope/telescope-symbols.nvim",
 				after = "telescope.nvim",
 			},
+      {
+        "nvim-telescope/telescope-dap.nvim",
+      }
 		})
 		use({
 			"akinsho/bufferline.nvim",
@@ -206,6 +209,20 @@ return require("packer").startup({
 				require("src.plugins.trouble")
 			end,
 		})
+		-----------------------------------
+		------------- DAP -----------------
+		-----------------------------------
+		use({
+			"mfussenegger/nvim-dap",
+			config = function()
+				require("src.plugins.dap.init")
+			end,
+		})
+		use({
+			"theHamsta/nvim-dap-virtual-text",
+			requires = { "mfussenegger/nvim-dap" },
+		})
+		use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 		-----------------------------------
 		-- LSP, Completions and Snippets --
 		-----------------------------------

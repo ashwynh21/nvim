@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 require("gitsigns").setup({
 	signs = {
-		add = { text = "+" },
+		add = { text = "*" },
 		change = { text = "~" },
 		delete = { text = "_" },
 		changedelete = { text = "=" },

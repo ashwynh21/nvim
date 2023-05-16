@@ -91,37 +91,39 @@ cs(
 	fmt(
 		[[
 /**
- * description - {}
- * {}
- * @returns - {}
-*/
-func{} {}({}) {} {{
+ * description - {}{}{}
+ */
+func{} {}({}){} {{
   {}
 }}
   ]],
 		{
 			i(1, "add a function description"),
-			d(1, function(arg)
-				print(vim.inspect(arg))
+			d(2, function(arg)
 				-- split the string of arguments by the delimiter
 				local args = vim.split(arg[1][1], ",")
 
-				local format = "{}"
-				local nodes = { t("") }
+				local format = "\n"
+				local nodes = {}
 
 				for index = 1, #args do
 					if args[index] == "" then
-						return sn(1, { t("") })
+						break
 					end
 
 					format = format .. "\n{}"
-					table.insert(nodes, t(" * @param - " .. args[index]))
+					table.insert(nodes, t(" * @param - " .. string.gsub(args[index], "^%s*(.-)%s*$", "%1")))
 				end
 
 				return sn(1, fmt(format, nodes))
-			end, 4),
-			rep(5),
-			c(2, {
+			end, 6),
+			d(3, function(arg)
+				if arg[1][1] == "" then
+					return sn(1, { t("") })
+				end
+				return sn(1, fmt("\n\n{}* @returns -{}", { t(" "), t(arg[1][1]) }))
+			end, 7),
+			c(4, {
 				-- or a func that is independent
 				t(""),
 				-- offer func that is attached to a struct type
@@ -138,10 +140,10 @@ func{} {}({}) {} {{
 					)
 				),
 			}),
-			i(3, "name"),
-			i(4, ""),
-			i(5, ""),
-			i(6, "// TODO - implementation"),
+			i(5, "name"),
+			i(6, ""),
+			i(7, ""),
+			i(0, "// TODO - implementation"),
 		}
 	)
 )
