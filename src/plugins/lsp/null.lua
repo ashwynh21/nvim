@@ -29,7 +29,7 @@ nls.setup({
 		-----------------
 		dgn.eslint,
 		dgn.shellcheck,
-		dgn.misspell,
+		-- dgn.misspell,
 		dgn.gospel,
 		------------------
 		-- CODE ACTIONS --

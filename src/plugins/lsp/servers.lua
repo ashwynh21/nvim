@@ -113,6 +113,25 @@ require("mason-lspconfig").setup_handlers({
 		})
 	end,
 
+	["gopls"] = function()
+		lsp.gopls.setup({
+			flags = flags,
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = { "gopls" },
+			filetypes = { "go", "gomod", "goword", "gotmpl" },
+			settings = {
+				gopls = {
+					completeUnimported = true,
+					usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
+          }
+				},
+			},
+		})
+	end,
+
 	["rust_analyzer"] = function()
 		-- Rust
 		lsp.rust_analyzer.setup({
@@ -213,8 +232,8 @@ require("mason-lspconfig").setup_handlers({
 						"!Join sequence",
 						"!Select sequence",
 						"!Split sequence",
-            "!GetAtt",
-            "!Ref",
+						"!GetAtt",
+						"!Ref",
 					},
 				},
 			},
