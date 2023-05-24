@@ -27,18 +27,26 @@ nls.setup({
 		-----------------
 		-- DIAGNOSTICS --
 		-----------------
-		dgn.eslint,
-		dgn.shellcheck,
-		-- dgn.misspell,
+		dgn.eslint.with({
+      timeout = 4800,
+    }),
+		dgn.misspell.with({
+      timeout = 4800,
+    }),
+    dgn.shellcheck,
 		dgn.gospel,
 		------------------
 		-- CODE ACTIONS --
 		------------------
-		-- cda.eslint,
-		-- cda.shellcheck,
-		-- nls.builtins.code_actions.gitsigns,
+		cda.eslint.with({
+      method = nls.methods.DIAGNOSTICS_ON_SAVE,
+    }),
+		cda.gitsigns.with({
+      method = nls.methods.DIAGNOSTICS_ON_SAVE,
+    }),
+    cda.shellcheck,
 	},
-	on_attach = function(client, bufnr)
+	on_attach = function(_, bufnr)
 		U.mappings(bufnr)
 	end,
 })

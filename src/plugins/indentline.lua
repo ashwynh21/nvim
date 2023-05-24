@@ -11,8 +11,8 @@ vim.opt.listchars:append("space:·")
 vim.opt.listchars:append("eol:↵")
 
 require("indent_blankline").setup({
-	filetype_exclude = { "help", "packer", "FTerm", "dashboard" },
-	buftype_exclude = { "terminal", "nofile" },
+	filetype_exclude = { "help", "packer", "FTerm", "dashboard", "neo-tree" },
+	buftype_exclude = { "terminal", "nofile", "neo-tree", "dashboard" },
 
 	show_end_of_line = true,
 	show_first_indent_level = true,
