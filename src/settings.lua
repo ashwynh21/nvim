@@ -8,7 +8,7 @@ o.termguicolors = true
 -- o.background = 'dark'
 
 -- Do not save when switching buffers
--- o.hidden = true
+o.hidden = true
 
 -- Decrease update time
 o.timeoutlen = 500

@@ -71,7 +71,9 @@ vim.diagnostic.config({
 	},
 })
 
-require("mason").setup()
+require("mason").setup({
+  PATH = "prepend"
+})
 require("mason-lspconfig").setup({
 	automatic_install = false,
 })
@@ -144,7 +146,7 @@ require("mason-lspconfig").setup_handlers({
 						allFeatures = true,
 					},
 					checkOnSave = {
-						allFeatures = true,
+						allFeatures = false,
 						command = "clippy",
 					},
 					procMacro = {

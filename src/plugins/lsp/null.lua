@@ -30,9 +30,9 @@ nls.setup({
 		dgn.eslint.with({
       timeout = 4800,
     }),
-		dgn.misspell.with({
-      timeout = 4800,
-    }),
+		-- dgn.misspell.with({
+    --   timeout = 4800,
+    -- }),
     dgn.shellcheck,
 		dgn.gospel,
 		------------------
@@ -41,9 +41,9 @@ nls.setup({
 		cda.eslint.with({
       method = nls.methods.DIAGNOSTICS_ON_SAVE,
     }),
-		cda.gitsigns.with({
-      method = nls.methods.DIAGNOSTICS_ON_SAVE,
-    }),
+		-- cda.gitsigns.with({
+    --   method = nls.methods.DIAGNOSTICS_ON_SAVE,
+    -- }),
     cda.shellcheck,
 	},
 	on_attach = function(_, bufnr)

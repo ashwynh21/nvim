@@ -44,9 +44,9 @@ return require("packer").startup({
 				"nvim-telescope/telescope-symbols.nvim",
 				after = "telescope.nvim",
 			},
-      {
-        "nvim-telescope/telescope-dap.nvim",
-      }
+			{
+				"nvim-telescope/telescope-dap.nvim",
+			},
 		})
 		use({
 			"akinsho/bufferline.nvim",
@@ -219,6 +219,12 @@ return require("packer").startup({
 			end,
 		})
 		use({
+      "leoluz/nvim-dap-go",
+      config = function()
+        require("src.plugins.godap")
+      end
+    })
+		use({
 			"theHamsta/nvim-dap-virtual-text",
 			requires = { "mfussenegger/nvim-dap" },
 		})
@@ -240,6 +246,21 @@ return require("packer").startup({
 				},
 			},
 		})
+    use({
+      "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+      as = "sonarlint.nvim",
+      event = "BufRead",
+      config = function()
+        require("src.plugins.sonar")
+      end,
+      requires = {
+        {
+          "neovim/nvim-lspconfig",
+					"williamboman/mason.nvim",
+					"williamboman/mason-lspconfig.nvim",
+        }
+      }
+    })
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			event = "BufRead",
