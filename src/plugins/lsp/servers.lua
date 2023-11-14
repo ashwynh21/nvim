@@ -71,9 +71,7 @@ vim.diagnostic.config({
 	},
 })
 
-require("mason").setup({
-  PATH = "prepend"
-})
+require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_install = false,
 })

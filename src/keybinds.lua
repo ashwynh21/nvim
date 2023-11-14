@@ -2,8 +2,6 @@ local which = require("which-key")
 
 local nmap = {
 	["<leader>"] = {
-		t = { ":Neotree toggle left<cr>", "Toggle NeoTree" },
-		g = { ":Neotree git_status toggle float<cr>", "Toggle Git Status" },
 		["["] = { ":bp<cr>", "Previous Tab" },
 		["]"] = { ":bn<cr>", "Next Tab" },
 	},

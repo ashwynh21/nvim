@@ -21,18 +21,6 @@ return require("packer").startup({
 		--   Navigation    --
 		---------------------
 		use({
-			"nvim-neo-tree/neo-tree.nvim",
-			branch = "v2.x",
-			requires = {
-				"nvim-lua/plenary.nvim",
-				"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-				"MunifTanjim/nui.nvim",
-			},
-			config = function()
-				require("src.plugins.neotree")
-			end,
-		})
-		use({
 			{
 				"nvim-telescope/telescope.nvim",
 				event = "CursorHold",
@@ -189,13 +177,6 @@ return require("packer").startup({
 		})
 		use("mattn/emmet-vim")
 		use({
-			"kosayoda/nvim-lightbulb",
-			requires = "antoinemadec/FixCursorHold.nvim",
-			config = function()
-				require("src.plugins.lightbulb")
-			end,
-		})
-		use({
 			"kylechui/nvim-surround",
 			tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 			config = function()
@@ -209,26 +190,6 @@ return require("packer").startup({
 				require("src.plugins.trouble")
 			end,
 		})
-		-----------------------------------
-		------------- DAP -----------------
-		-----------------------------------
-		use({
-			"mfussenegger/nvim-dap",
-			config = function()
-				require("src.plugins.dap.init")
-			end,
-		})
-		use({
-      "leoluz/nvim-dap-go",
-      config = function()
-        require("src.plugins.godap")
-      end
-    })
-		use({
-			"theHamsta/nvim-dap-virtual-text",
-			requires = { "mfussenegger/nvim-dap" },
-		})
-		use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 		-----------------------------------
 		-- LSP, Completions and Snippets --
 		-----------------------------------
@@ -246,21 +207,21 @@ return require("packer").startup({
 				},
 			},
 		})
-    use({
-      "https://gitlab.com/schrieveslaach/sonarlint.nvim",
-      as = "sonarlint.nvim",
-      event = "BufRead",
-      config = function()
-        require("src.plugins.sonar")
-      end,
-      requires = {
-        {
-          "neovim/nvim-lspconfig",
+		use({
+			"https://gitlab.com/schrieveslaach/sonarlint.nvim",
+			as = "sonarlint.nvim",
+			event = "BufRead",
+			config = function()
+				require("src.plugins.sonar")
+			end,
+			requires = {
+				{
+					"neovim/nvim-lspconfig",
 					"williamboman/mason.nvim",
 					"williamboman/mason-lspconfig.nvim",
-        }
-      }
-    })
+				},
+			},
+		})
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			event = "BufRead",
@@ -272,7 +233,6 @@ return require("packer").startup({
 			"glepnir/lspsaga.nvim",
 			opt = true,
 			branch = "main",
-			event = "LspAttach",
 			config = function()
 				require("src.plugins.saga")
 			end,

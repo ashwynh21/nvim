@@ -18,7 +18,7 @@ require("sonarlint").setup({
 		-- Tested and working
 		"python",
 		"cpp",
-    "javascript",
-    "typescript"
+		"javascript",
+		"typescript",
 	},
 })

@@ -65,9 +65,9 @@ local keymaps = {
 		g = { "<cmd>lua Telescope.live_grep()<cr>", "Live Grep" },
 		c = { "<cmd>lua Telescope.git_status()<cr>", "Git Status" },
 
-    t = { "<cmd>FloatermToggle<cr>", "Toggle Terminal" },
-    n = { "<cmd>FloatermNew<cr>", "New Terminal" },
-    x = { "<cmd>FloatermKill!<cr>", "Kill Terminal" }
+		t = { "<cmd>FloatermToggle<cr>", "Toggle Terminal" },
+		n = { "<cmd>FloatermNew<cr>", "New Terminal" },
+		x = { "<cmd>FloatermKill!<cr>", "Kill Terminal" },
 	},
 }
 
@@ -81,4 +81,3 @@ require("which-key").register(keymaps, {
 })
 
 require("telescope").load_extension("file_browser")
-require('telescope').load_extension('dap')
