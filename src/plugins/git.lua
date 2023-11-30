@@ -7,3 +7,4 @@ require("git").setup({
   },
   default_mapping = true
 })
+

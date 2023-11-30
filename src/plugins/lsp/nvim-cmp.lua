@@ -48,7 +48,7 @@ cmp.setup({
 		{ name = "nvim_lsp", max_item_count = 10 },
 		{ name = "luasnip" },
 		{ name = "path" },
-    { name = "nvim_lua" },
+		{ name = "nvim_lua" },
 		{ name = "buffer", max_item_count = 10 },
 	}),
 	snippet = {

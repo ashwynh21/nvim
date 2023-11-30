@@ -4,6 +4,13 @@ local o = vim.o
 -- cmd("syntax on")
 -- vim.api.nvim_command('filetype plugin indent on')
 
+-- disable netrw at the very start of your init.lua
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
+g.skip_ts_context_commentstring_module = true
+
+-- set termguicolors to enable highlight groups
 o.termguicolors = true
 -- o.background = 'dark'
 

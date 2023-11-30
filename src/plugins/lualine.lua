@@ -6,7 +6,7 @@ require("lualine").setup {
     component_separators = { left = '', right = '' },
     disabled_filetypes = {
       'packer',
-      'neo-tree',
+      'NvimTree',
       statusline = {},
       winbar = {},
     }

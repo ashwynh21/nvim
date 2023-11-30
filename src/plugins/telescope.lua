@@ -31,19 +31,6 @@ require("telescope").setup({
 			override_file_sorter = true, -- override the file sorter
 			case_mode = "smart_case", -- "smart_case" | "ignore_case" | "respect_case"
 		},
-		file_browser = {
-			theme = "dropdown",
-			-- disables netrw and use telescope-file-browser in its place
-			hijack_netrw = true,
-			mappings = {
-				["i"] = {
-					-- your custom insert mode mappings
-				},
-				["n"] = {
-					-- your custom normal mode mappings
-				},
-			},
-		},
 	},
 })
 
@@ -69,8 +56,11 @@ local keymaps = {
 		n = { "<cmd>FloatermNew<cr>", "New Terminal" },
 		x = { "<cmd>FloatermKill!<cr>", "Kill Terminal" },
 	},
+	t = {
+		{ "<cmd>NvimTreeToggle<cr>", "File Tree" },
+    f = { "<cmd>NvimTreeFindFile<cr>", "File Tree Focus on File" }
+	},
 }
-
 require("which-key").register(keymaps, {
 	mode = "n",
 	prefix = "<leader>",
