@@ -114,6 +114,7 @@ local theme = function(use)
 	-----------------------------------
 	use("shaunsingh/solarized.nvim")
 	use("folke/tokyonight.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({
 		"loctvl842/monokai-pro.nvim",
 	})
@@ -213,6 +214,18 @@ local editor = function(use)
 	use({
 		"tpope/vim-fugitive",
 	})
+	use({
+		"stevearc/dressing.nvim",
+		config = function()
+			require("src.plugins.dressing")
+		end,
+	})
+	use({
+		"rcarriga/nvim-notify",
+		config = function()
+			require("src.plugins.notify")
+		end,
+	})
 end
 
 local completion = function(use)
@@ -256,9 +269,8 @@ local completion = function(use)
 		end,
 	})
 	use({
-		"glepnir/lspsaga.nvim",
-		opt = true,
-		branch = "main",
+		"nvimdev/lspsaga.nvim",
+		after = "nvim-lspconfig",
 		config = function()
 			require("src.plugins.saga")
 		end,
@@ -325,6 +337,24 @@ local completion = function(use)
 	use("nvim-lua/popup.nvim")
 end
 
+local dap = function(use)
+	-----------------------
+	-------- DAP ----------
+	-----------------------
+	use({
+		"mfussenegger/nvim-dap",
+		config = function()
+			---@diagnostic disable-next-line: different-requires
+			require("src.plugins.dap.dap")
+		end,
+	})
+	use({
+		"theHamsta/nvim-dap-virtual-text",
+		requires = { "mfussenegger/nvim-dap" },
+	})
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+end
+
 return require("packer").startup({
 	function(use)
 		packer(use)
@@ -334,6 +364,7 @@ return require("packer").startup({
 		treesitter(use)
 		editor(use)
 		completion(use)
+		dap(use)
 	end,
 	config = {
 		display = {

@@ -6,7 +6,6 @@ nvimtree.setup({
 		update_cwd = true,
 	},
 	renderer = {
-		root_folder_modifier = ":t",
 		-- These icons are visible when you install web-devicons
 		icons = {
 			glyphs = {
