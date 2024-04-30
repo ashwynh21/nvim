@@ -3,7 +3,7 @@ local nvimtree = require("nvim-tree")
 nvimtree.setup({
 	update_focused_file = {
 		enable = true,
-		update_cwd = true,
+		update_cwd = false,
 	},
 	renderer = {
 		-- These icons are visible when you install web-devicons

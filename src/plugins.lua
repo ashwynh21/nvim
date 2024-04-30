@@ -62,14 +62,6 @@ local navigation = function(use)
 		end,
 	})
 	use({
-		"glepnir/dashboard-nvim",
-		event = "VimEnter",
-		config = function()
-			require("src.plugins.dashboard")
-		end,
-		requires = { "nvim-tree/nvim-web-devicons" },
-	})
-	use({
 		"nvim-telescope/telescope-file-browser.nvim",
 	})
 	use("voldikss/vim-floaterm")
