@@ -1,8 +1,3 @@
--- Treesitter folds
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldlevelstart = 99
-
 require("nvim-treesitter.install").compilers = { "clang", "zig", "gcc" }
 require("nvim-treesitter.install").target = "x86_64-w64-windows-gnu"
 
@@ -31,9 +26,9 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 	incremental_selection = {
-    indent = {
-      enable = true,
-    },
+		indent = {
+			enable = true,
+		},
 		enable = true,
 		keymaps = {
 			init_selection = "ss",

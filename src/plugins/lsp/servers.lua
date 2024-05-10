@@ -1,4 +1,5 @@
 local lsp = require("lspconfig")
+local util = require("lspconfig.util")
 local U = require("src.plugins.lsp.utils")
 
 ---Common perf related flags for all the LSP servers
@@ -90,6 +91,7 @@ require("mason-lspconfig").setup_handlers({
 			flags = flags,
 			capabilities = capabilities,
 			on_attach = on_attach,
+			root_dir = util.root_pattern(".git"),
 			settings = {
 				["tsserver"] = {
 					completion = {
@@ -124,9 +126,9 @@ require("mason-lspconfig").setup_handlers({
 				gopls = {
 					completeUnimported = true,
 					usePlaceholders = true,
-          analyses = {
-            unusedparams = true,
-          }
+					analyses = {
+						unusedparams = true,
+					},
 				},
 			},
 		})
