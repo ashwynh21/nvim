@@ -105,7 +105,12 @@ local theme = function(use)
 	----------- Theming ---------------
 	-----------------------------------
 	use("shaunsingh/solarized.nvim")
-	use("folke/tokyonight.nvim")
+	use({
+    "folke/tokyonight.nvim",
+    config = function ()
+      require("src.plugins.tokyonight")
+    end
+  })
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({
 		"loctvl842/monokai-pro.nvim",

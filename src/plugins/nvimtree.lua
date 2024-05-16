@@ -8,12 +8,25 @@ nvimtree.setup({
 	renderer = {
 		-- These icons are visible when you install web-devicons
 		icons = {
+			web_devicons = {
+				file = {
+					enable = true,
+					color = true,
+				},
+				folder = {
+					enable = false,
+					color = true,
+				},
+			},
+
 			glyphs = {
 				default = "",
 				symlink = "",
+				bookmark = "󰆤",
+				modified = "●",
 				folder = {
-					arrow_open = "",
 					arrow_closed = "",
+					arrow_open = "",
 					default = "",
 					open = "",
 					empty = "",
@@ -22,11 +35,11 @@ nvimtree.setup({
 					symlink_open = "",
 				},
 				git = {
-					unstaged = "",
-					staged = "S",
+					unstaged = "✗",
+					staged = "✓",
 					unmerged = "",
 					renamed = "➜",
-					untracked = "U",
+					untracked = "★",
 					deleted = "",
 					ignored = "◌",
 				},
@@ -45,5 +58,6 @@ nvimtree.setup({
 	},
 	view = {
 		width = 40,
+		adaptive_size = true,
 	},
 })
