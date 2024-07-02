@@ -73,6 +73,30 @@ local navigation = function(use)
 		end,
 		requires = { "nvim-tree/nvim-web-devicons" },
 	})
+
+	use({
+		"folke/twilight.nvim",
+		{
+			dimming = {
+				alpha = 0.8, -- amount of dimming
+				-- we try to get the foreground from the highlight groups or fallback color
+				color = { "Normal", "#ffffff" },
+				term_bg = "#000000", -- if guibg=NONE, this will be used to calculate text color
+				inactive = false, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
+			},
+			context = 24, -- amount of lines we will try to show around the current line
+			treesitter = true, -- use treesitter when available for the filetype
+			-- treesitter is used to automatically expand the visible text,
+			-- but you can further control the types of nodes that should always be fully expanded
+			expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
+				"function",
+				"method",
+				"table",
+				"if_statement",
+			},
+			exclude = {}, -- exclude these filetypes
+		},
+	})
 end
 
 local theme = function(use)
@@ -106,16 +130,22 @@ local theme = function(use)
 	-----------------------------------
 	use("shaunsingh/solarized.nvim")
 	use({
-    "folke/tokyonight.nvim",
-    config = function ()
-      require("src.plugins.tokyonight")
-    end
-  })
+		"folke/tokyonight.nvim",
+		config = function()
+			require("src.plugins.tokyonight")
+		end,
+	})
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({
 		"loctvl842/monokai-pro.nvim",
 	})
 	use({ "rose-pine/neovim", as = "rose-pine" })
+	use({
+		"xiyaowong/transparent.nvim",
+		config = function()
+			require("src.plugins.transparent")
+		end,
+	})
 end
 
 local treesitter = function(use)

@@ -22,3 +22,7 @@ require("tokyonight").setup({
 
 vim.cmd([[set background=dark]])
 vim.cmd([[colorscheme tokyonight]])
+
+vim.cmd([[set noshowmode]])
+vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
+vim.cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])

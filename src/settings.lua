@@ -90,4 +90,3 @@ o.incsearch = true
 -- g.mapleader = ' '
 g.maplocalleader = " "
 
-vim.cmd([[set noshowmode]])

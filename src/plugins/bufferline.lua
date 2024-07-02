@@ -3,7 +3,7 @@ vim.opt.termguicolors = true
 require("bufferline").setup({
 	options = {
 		mode = "buffers",
-		separator_style = "slant",
+		separator_style = "thin",
 		close_command = "bdelete! %d",
 		always_show_bufferline = true,
 		show_buffer_close_icons = true,
@@ -23,4 +23,3 @@ require("bufferline").setup({
 		},
 	},
 })
-
