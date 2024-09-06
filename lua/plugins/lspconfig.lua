@@ -2,6 +2,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufRead",
+		lazy = false,
 		config = function()
 			require("lsp.lsp.servers")
 		end,
@@ -17,6 +18,7 @@ return {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "BufRead",
+		lazy = false,
 		config = function()
 			require("lsp.lsp.null")
 		end,

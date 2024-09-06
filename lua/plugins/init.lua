@@ -26,7 +26,25 @@ return {
 
 	-- I have a separate config.mappings file where I require which-key.
 	-- With lazy the plugin will be automatically loaded when it is required somewhere
-	{ "folke/which-key.nvim", lazy = true },
+	{
+		"folke/which-key.nvim",
+		lazy = true,
+		event = "VeryLazy",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
+	},
 
 	{
 		"nvim-neorg/neorg",
@@ -53,7 +71,7 @@ return {
 	-- if some code requires a module from an unloaded plugin, it will be automatically loaded.
 	-- So for api plugins like devicons, we can always set lazy=true
 	{
-		"kyazdani42/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 		config = function()
 			require("nvim-web-devicons").setup()
 		end,

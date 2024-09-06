@@ -3,7 +3,7 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		tag = "v4.7.0",
-		requires = "kyazdani42/nvim-web-devicons",
+		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
 			vim.opt.termguicolors = true
 

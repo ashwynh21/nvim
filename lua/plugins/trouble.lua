@@ -1,7 +1,8 @@
 return {
 	{
 		"folke/trouble.nvim",
-		requires = "nvim-tree/nvim-web-devicons",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		lazy = false,
 		config = function()
 			local which = require("which-key")
 

@@ -83,6 +83,13 @@ require("mason-lspconfig").setup_handlers({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
+
+		if server_name == "tsserver" then
+			server_name = "ts_ls"
+		end
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+		})
 	end,
 
 	["tsserver"] = function()
