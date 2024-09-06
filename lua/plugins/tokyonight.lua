@@ -29,7 +29,7 @@ return {
 
 			vim.cmd([[set noshowmode]])
 			vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
-			vim.cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
+			vim.cmd([[hi NeotreeNormal guibg=NONE ctermbg=NONE]])
 		end,
 	},
 }

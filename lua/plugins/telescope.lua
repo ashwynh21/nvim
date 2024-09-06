@@ -54,7 +54,7 @@ return {
 
 			_G.Telescope = setmetatable({}, {
 				__index = function(_, k)
-					if vim.bo.filetype == "NvimTree" then
+					if vim.bo.filetype == "neo-tree" then
 						A.nvim_cmd({ cmd = "wincmd", args = { "l" } }, {})
 					end
 					return require("telescope.builtin")[k]
@@ -75,8 +75,7 @@ return {
 					x = { "<cmd>FloatermKill!<cr>", "Kill Terminal" },
 				},
 				t = {
-					{ "<cmd>NvimTreeToggle<cr>", "File Tree" },
-					f = { "<cmd>NvimTreeFindFile<cr>", "File Tree Focus on File" },
+					{ "<cmd>Neotree filesystem reveal left<cr>", "File Tree" },
 				},
 			}
 			require("which-key").register(keymaps, {

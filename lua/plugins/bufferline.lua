@@ -20,7 +20,7 @@ return {
 					diagnostics = "nvim_lsp",
 					offsets = {
 						{
-							filetype = "NvimTree",
+							filetype = "neo-tree",
 							text = vim.fn.getcwd(),
 							highlight = "Directory",
 							text_align = "center",

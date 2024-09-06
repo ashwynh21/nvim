@@ -31,8 +31,8 @@ return {
 					highlight = highlight,
 				},
 				exclude = {
-					filetypes = { "help", "packer", "FTerm", "dashboard", "NvimTree" },
-					buftypes = { "terminal", "nofile", "NvimTree", "dashboard" },
+					filetypes = { "help", "packer", "FTerm", "neo-tree" },
+					buftypes = { "terminal", "nofile", "neo-tree" },
 				},
 			})
 		end,
