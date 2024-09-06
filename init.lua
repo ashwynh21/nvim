@@ -5,16 +5,9 @@
 --  /_/ /_/\___/\____/_____/ /_/  /_/ /_/ /_/
 --
 -- Vanilla Config
+require("settings")
 
-package.path = package.path .. "C:\\Users\\ashwy\\AppData\\local\\nvim\\?.lua;"
+require("config.lazy")
 
-require("src.settings")
-require("src.autocmd")
-require("src.plugins")
-require("src.keybinds")
-
----Pretty print lua table
-function _G.dump(...)
-	local objects = vim.tbl_map(vim.inspect, { ... })
-	print(unpack(objects))
-end
+require("autocmd")
+require("keybinds")
