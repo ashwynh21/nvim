@@ -1,9 +1,11 @@
 return {
   -- tools
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
+        "debugpy",
+        "black",
         "stylua",
         "selene",
         "luacheck",
@@ -17,6 +19,13 @@ return {
   },
 
   -- lsp servers
+  {
+    "GustavEikaas/easy-dotnet.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("easy-dotnet").setup()
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     opts = {

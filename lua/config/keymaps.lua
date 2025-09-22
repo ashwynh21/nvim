@@ -45,10 +45,10 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 -- Move window
-keymap.set("n", "sh", "<C-w>h")
-keymap.set("n", "sk", "<C-w>k")
-keymap.set("n", "sj", "<C-w>j")
-keymap.set("n", "sl", "<C-w>l")
+keymap.set("n", "s<left>", "<C-w>h")
+keymap.set("n", "s<up>", "<C-w>k")
+keymap.set("n", "s<down>", "<C-w>j")
+keymap.set("n", "s<right>", "<C-w>l")
 
 -- Resize window
 keymap.set("n", "<C-w><left>", "<C-w><")
